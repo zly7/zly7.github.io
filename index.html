@@ -1,13 +1,638 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>zly7 | AI系统工程师</title>
+  <meta name="description" content="张力宇（zly7）个人作品集，聚焦可验证大模型系统、管网智能与产品化AI工程。" />
+  <meta name="theme-color" content="#0B1020" />
+  <meta property="og:title" content="zly7 | AI系统工程师" />
+  <meta property="og:description" content="张力宇（zly7）个人作品集，展示 PipeClaw、PipeFormer 与灵犀智慧养老等主力项目。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./public/assets/projects/pipeclaw-system.png" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2336BCF7'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230B1020'/%3E%3Cpath d='M18 18h28v8L28 46h18v8H18v-8l18-20H18z' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#0b1020; --panel:rgba(11,16,32,.84); --panel2:rgba(15,23,42,.78); --line:rgba(148,163,184,.16); --text:#e8eefc; --muted:#98a4c4; --cyan:#36bcf7; --violet:#8b5cf6; --teal:#22d3ee; --shadow:0 28px 80px rgba(2,6,23,.52); --container:1180px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:"Space Grotesk","PingFang SC","Microsoft YaHei","Segoe UI",sans-serif; background:radial-gradient(circle at top left,rgba(54,188,247,.16),transparent 28%),radial-gradient(circle at top right,rgba(139,92,246,.16),transparent 24%),linear-gradient(180deg,#09101f 0%,#0b1020 42%,#070b17 100%); overflow-x:hidden; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; background-image:linear-gradient(rgba(148,163,184,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.08) 1px,transparent 1px); background-size:52px 52px; mask-image:radial-gradient(circle at center,black 42%,transparent 92%); z-index:-1; }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; }
+    .page { width:min(calc(100% - 32px), var(--container)); margin:0 auto; }
+    .mono,.nav a,.tag,.eyebrow,.kicker,.timeline time,.footer,.metric-label,.lang-switch { font-family:"IBM Plex Mono",monospace; }
+    .header { position:sticky; top:12px; z-index:20; margin-top:12px; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:20px; border:1px solid var(--line); border-radius:999px; background:rgba(11,16,32,.72); backdrop-filter:blur(18px); box-shadow:0 18px 50px rgba(2,6,23,.42); }
+    .brand { display:flex; align-items:center; gap:14px; text-transform:uppercase; letter-spacing:.08em; font-size:.94rem; }
+    .mark { width:42px; height:42px; border-radius:14px; display:grid; place-items:center; color:#081019; background:linear-gradient(135deg,var(--cyan),var(--teal)); box-shadow:0 10px 30px rgba(34,211,238,.28); }
+    .brand small { display:block; color:var(--muted); font-size:.72rem; }
+    .header-right { display:flex; align-items:center; gap:14px; }
+    .nav { display:flex; gap:18px; flex-wrap:wrap; }
+    .nav a { color:var(--muted); font-size:.9rem; }
+    .lang-switch { min-height:42px; padding:0 14px; border-radius:999px; border:1px solid rgba(54,188,247,.22); background:rgba(15,23,42,.82); color:#dff8ff; letter-spacing:.06em; cursor:pointer; }
+    main { padding:28px 0 72px; }
+    section { margin-top:26px; padding:32px clamp(18px,3vw,30px); position:relative; overflow:hidden; border:1px solid var(--line); border-radius:30px; background:linear-gradient(180deg,rgba(15,23,42,.78),rgba(11,16,32,.9)); box-shadow:var(--shadow); backdrop-filter:blur(14px); }
+    section::before { content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; background:linear-gradient(135deg,rgba(54,188,247,.22),rgba(139,92,246,.18),transparent 70%); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+    h1,h2,h3,p { margin:0; }
+    h1 { font-size:clamp(3rem,9vw,6.2rem); line-height:.95; letter-spacing:-.05em; }
+    h2 { font-size:clamp(2rem,5vw,3.2rem); line-height:1; letter-spacing:-.04em; }
+    .hero,.about-grid,.project-grid,.skills-grid,.metrics-grid,.contact-grid,.status-grid,.signal-grid,.metric-strip { display:grid; gap:18px; }
+    .hero { min-height:calc(100vh - 120px); align-items:center; grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr); }
+    .eyebrow { display:inline-flex; align-items:center; gap:10px; margin-bottom:18px; padding:8px 14px; border:1px solid rgba(54,188,247,.2); border-radius:999px; color:var(--teal); background:rgba(9,16,31,.72); font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; }
+    .eyebrow::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 18px rgba(34,211,238,.8); }
+    .accent { display:block; color:transparent; background:linear-gradient(135deg,#f8fbff 10%,var(--cyan) 50%,var(--violet) 100%); -webkit-background-clip:text; background-clip:text; }
+    .lead,.desc,.card p,.timeline p,.hero-note,.point,.placeholder,.contact-box p,.metric-box p { color:var(--muted); line-height:1.75; }
+    .lead { margin-top:18px; max-width:760px; font-size:clamp(1rem,2vw,1.14rem); }
+    .terminal { display:inline-flex; align-items:center; gap:10px; margin-top:22px; min-height:32px; color:#c6fff7; font-family:"IBM Plex Mono",monospace; font-size:.96rem; }
+    .terminal::before { content:">"; color:var(--cyan); }
+    .cursor { width:10px; height:1.1em; background:linear-gradient(180deg,rgba(54,188,247,.95),transparent); animation:blink 1s steps(2,end) infinite; }
+    .buttons,.tags,.links { display:flex; flex-wrap:wrap; gap:12px; }
+    .buttons { margin-top:28px; }
+    .btn,.pill { min-height:48px; padding:0 18px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; transition:transform .18s ease,border-color .18s ease; }
+    .btn:hover,.pill:hover { transform:translateY(-2px); }
+    .primary { color:#05111f; background:linear-gradient(135deg,var(--cyan),var(--teal)); box-shadow:0 20px 40px rgba(54,188,247,.22); }
+    .secondary,.pill { border:1px solid var(--line); background:rgba(15,23,42,.72); }
+    .tertiary { border:1px solid rgba(139,92,246,.3); color:#d7cdff; background:rgba(35,25,60,.46); }
+    .status-grid { margin-top:22px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .card,.hero-side,.metric-box,.embed,.contact-box { padding:20px; border:1px solid rgba(148,163,184,.14); border-radius:18px; background:linear-gradient(180deg,rgba(15,23,42,.74),rgba(9,16,31,.86)); }
+    .status strong,.signal strong,.metric-number { display:block; margin-bottom:6px; font-size:1.5rem; color:#f8fbff; }
+    .status span,.signal span { color:var(--muted); line-height:1.6; font-size:.92rem; }
+    .hero-side { border-color:rgba(54,188,247,.18); }
+    .hero-head,.section-head,.footer { display:flex; justify-content:space-between; align-items:end; gap:18px; }
+    .signal-grid { margin-top:18px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .kicker { display:inline-flex; align-items:center; gap:10px; margin-bottom:12px; color:var(--cyan); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
+    .kicker::before { content:""; width:34px; height:1px; background:linear-gradient(90deg,transparent,var(--cyan)); }
+    .desc { max-width:680px; }
+    .about-grid { grid-template-columns:minmax(0,1.02fr) minmax(280px,.98fr); align-items:start; }
+    .stack,.timeline,.points,.placeholder-list { display:grid; gap:14px; }
+    .philo { padding:18px; border-left:2px solid rgba(54,188,247,.4); border-radius:0 18px 18px 0; background:rgba(10,16,30,.66); }
+    .philo h3,.point strong,.placeholder strong { display:block; margin-bottom:8px; color:#f8fbff; }
+    .timeline article { position:relative; padding:18px 18px 18px 56px; border:1px solid rgba(148,163,184,.12); border-radius:18px; background:rgba(8,13,24,.82); }
+    .timeline article::before { content:""; position:absolute; top:24px; left:22px; width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,var(--cyan),var(--violet)); box-shadow:0 0 20px rgba(54,188,247,.38); }
+    .timeline article::after { content:""; position:absolute; top:42px; left:28px; bottom:-20px; width:2px; background:linear-gradient(180deg,rgba(54,188,247,.3),transparent); }
+    .timeline article:last-child::after { display:none; }
+    .timeline time { display:block; margin-bottom:8px; color:var(--cyan); font-size:.8rem; }
+    .project-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .project { display:flex; flex-direction:column; }
+    .visual { aspect-ratio:16 / 10; overflow:hidden; border-radius:18px; margin-bottom:18px; background:linear-gradient(180deg,rgba(54,188,247,.1),rgba(139,92,246,.18)),rgba(7,11,23,.9); }
+    .visual img { width:100%; height:100%; object-fit:cover; opacity:.84; }
+    .project-meta,.metric-label { color:var(--cyan); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; }
+    .point,.placeholder,.embed-frame { padding:14px; border-radius:16px; background:rgba(8,13,24,.8); border:1px solid rgba(148,163,184,.12); }
+    .tags { margin-top:18px; }
+    .tag { display:inline-flex; align-items:center; min-height:34px; padding:0 12px; border-radius:999px; border:1px solid rgba(54,188,247,.16); background:rgba(12,20,36,.84); color:#cbeefd; font-size:.82rem; }
+    .links { margin-top:auto; padding-top:20px; }
+    .skills-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .skill-head { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:14px; }
+    .skill-meta { color:var(--muted); font-family:"IBM Plex Mono",monospace; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; }
+    .bar { position:relative; width:100%; height:10px; margin-bottom:16px; overflow:hidden; border-radius:999px; background:rgba(51,65,85,.58); }
+    .bar span { position:absolute; inset:0 auto 0 0; border-radius:inherit; background:linear-gradient(90deg,var(--cyan),var(--violet)); }
+    .metric-strip { grid-template-columns:repeat(4,minmax(0,1fr)); margin-bottom:20px; }
+    .metric-number { font-size:clamp(1.7rem,4vw,2.4rem); font-weight:700; }
+    .metrics-grid { grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr); }
+    .embed-frame img { width:100%; border-radius:14px; }
+    .contact-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .footer { padding:26px 6px 0; color:var(--muted); font-size:.8rem; letter-spacing:.05em; text-transform:uppercase; }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .5s ease,transform .5s ease; }
+    .reveal.show { opacity:1; transform:translateY(0); }
+    @keyframes blink { 50% { opacity:0; } }
+    @media (max-width:1024px) { .hero,.about-grid,.project-grid,.skills-grid,.metrics-grid,.contact-grid,.metric-strip { grid-template-columns:1fr; } .status-grid,.signal-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .header,.section-head,.footer { flex-direction:column; align-items:flex-start; } .header-right,.nav { width:100%; justify-content:flex-start; overflow-x:auto; } }
+    @media (max-width:680px) { .page { width:min(calc(100% - 20px), var(--container)); } .header { top:8px; margin-top:8px; border-radius:24px; } section { padding:24px 18px; border-radius:24px; } h1 { font-size:clamp(2.6rem,17vw,4.2rem); } .status-grid,.signal-grid { grid-template-columns:1fr; } .btn,.pill { width:100%; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none !important; transition:none !important; } .reveal { opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <a class="brand" href="#top" aria-label="zly7 home"><span class="mark">Z</span><span>zly7<small id="brand-role"></small></span></a>
+      <div class="header-right">
+        <nav class="nav" aria-label="Primary navigation">
+          <a id="nav-about" href="#about"></a>
+          <a id="nav-projects" href="#projects"></a>
+          <a id="nav-skills" href="#skills"></a>
+          <a id="nav-metrics" href="#metrics"></a>
+          <a id="nav-contact" href="#contact"></a>
+        </nav>
+        <button id="lang-toggle" class="lang-switch" type="button">EN</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero reveal" aria-labelledby="hero-title">
+        <div>
+          <div id="hero-eyebrow" class="eyebrow"></div>
+          <h1 id="hero-title">张力宇 <span class="accent">zly7</span></h1>
+          <p id="hero-lead" class="lead"></p>
+          <div class="terminal" aria-live="polite"><span id="rotating-text"></span><span class="cursor" aria-hidden="true"></span></div>
+          <div class="buttons">
+            <a id="cta-projects" class="btn primary" href="#projects"></a>
+            <a id="cta-contact" class="btn secondary" href="#contact"></a>
+            <a id="cta-resume" class="btn tertiary" href="./public/resume/zly7-resume.pdf" target="_blank" rel="noreferrer"></a>
+          </div>
+          <div id="hero-stats" class="status-grid"></div>
+        </div>
+        <aside class="hero-side">
+          <div class="hero-head"><div><div id="hero-side-kicker" class="mono"></div><strong id="hero-side-title"></strong></div><div id="hero-side-badge" class="tag"></div></div>
+          <div id="hero-signals" class="signal-grid"></div>
+          <p id="hero-note" class="hero-note"></p>
+        </aside>
+      </section>
+
+      <section id="about" class="reveal">
+        <div class="section-head">
+          <div><div id="about-kicker" class="kicker"></div><h2 id="about-title"></h2></div>
+          <p id="about-desc" class="desc"></p>
+        </div>
+        <div class="about-grid">
+          <div class="card"><h3 id="philosophy-title"></h3><div id="philosophy-list" class="stack"></div></div>
+          <div id="timeline-list" class="timeline"></div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal">
+        <div class="section-head">
+          <div><div id="projects-kicker" class="kicker"></div><h2 id="projects-title"></h2></div>
+          <p id="projects-desc" class="desc"></p>
+        </div>
+        <div id="projects-grid" class="project-grid"></div>
+      </section>
+
+      <section id="skills" class="reveal">
+        <div class="section-head">
+          <div><div id="skills-kicker" class="kicker"></div><h2 id="skills-title"></h2></div>
+          <p id="skills-desc" class="desc"></p>
+        </div>
+        <div id="skills-grid" class="skills-grid"></div>
+      </section>
+
+      <section id="metrics" class="reveal">
+        <div class="section-head">
+          <div><div id="metrics-kicker" class="kicker"></div><h2 id="metrics-title"></h2></div>
+          <p id="metrics-desc" class="desc"></p>
+        </div>
+        <div id="metric-strip" class="metric-strip"></div>
+        <div class="metrics-grid">
+          <article class="embed"><h3 id="heatmap-title"></h3><p id="heatmap-desc" class="desc"></p><div class="embed-frame"><img src="https://ghchart.rshah.org/36BCF7/zly7" alt="GitHub contribution heatmap for zly7" loading="lazy" referrerpolicy="no-referrer" /></div></article>
+          <article class="embed"><h3 id="placeholder-title"></h3><p id="placeholder-desc" class="desc"></p><div id="placeholder-list" class="placeholder-list"></div></article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal">
+        <div class="section-head">
+          <div><div id="contact-kicker" class="kicker"></div><h2 id="contact-title"></h2></div>
+          <p id="contact-desc" class="desc"></p>
+        </div>
+        <div id="contact-grid" class="contact-grid"></div>
+      </section>
+
+      <div class="footer"><span id="footer-left"></span><span id="footer-right"></span></div>
+    </main>
+  </div>
+  <noscript>请启用 JavaScript 以查看本站的中英双语内容。 Enable JavaScript to view the bilingual portfolio.</noscript>
+
+  <script>
+    const copy = {
+      zh: {
+        metaTitle: "zly7 | AI系统工程师",
+        metaDescription: "张力宇（zly7）个人作品集，聚焦可验证大模型系统、管网智能与产品化AI工程。",
+        brandRole: "AI系统工程师",
+        nav: { about: "关于", projects: "项目", skills: "技能", metrics: "指标", contact: "联系" },
+        toggle: "EN",
+        hero: {
+          eyebrow: "AI系统工程 / 大模型 / Pipeline Intelligence",
+          lead: "聚焦大模型工程、管网智能、评测方法论与可运行的研究型产品。",
+          ctas: { projects: "查看项目", contact: "联系我", resume: "查看简历 PDF" },
+          stats: [
+            { value: "2篇 SCI Q1", label: "唯一一作论文分别落在管网决策系统与稀疏 Transformer 预测方向。" },
+            { value: "80 / 800", label: "构建 Pipeline-Bench，包含 80 个模板与 800 个测试实例。" },
+            { value: "92% - 94%", label: "在腾讯 TEG 重构前端代码生成评测 SOP 后提升评测一致性。" }
+          ],
+          sideKicker: "经历摘要",
+          sideTitle: "北大 · 南科大 · 腾讯 · 东京LocationMind · 新加坡A*STAR",
+          badge: "2026 作品集",
+          signals: [
+            { value: "2.56x", label: "Pipeline-Agent 在论文报告中相对 GPT-5.2 的平均得分提升。" },
+            { value: "14.8ms", label: "PipeFormer 在稀疏注意力设置下的单步前向推理时间。" },
+            { value: "LLM + Agent", label: "覆盖 GPT-2 预训练、Qwen SFT、DPO 相关数据工作，以及 LangChain 与 LangGraph。" },
+            { value: "系统整合", label: "覆盖后端、看板、基准构建、PDF 报告与项目展示层。" }
+          ],
+          note: "工作内容主要落在模型、系统流程与展示层的一体化实现。",
+          subtitles: [
+            "先算后说的 Agent 系统，适合真实工业任务。",
+            "偏好证据链，而不是只会流畅表达的大模型工程。",
+            "面向管网数字孪生的拓扑感知稀疏建模。",
+            "把研究做成能展示、能运行、能解释的产品原型。"
+          ]
+        },
+        about: {
+          kicker: "关于",
+          title: "围绕研究、工程与项目展开",
+          desc: "南科大计算机本科学习、A*STAR 稀疏注意力研究、LocationMind 时空推理、腾讯 TEG 大模型评测、北大硕士阶段研究，以及下面三个主力仓库。",
+          philosophyTitle: "工程理念",
+          philosophy: [
+            { title: "先计算，再解释", body: "我更偏好能生成脚本、中间产物和证据链的系统，而不是只靠文本推理硬答。" },
+            { title: "结构不是噪声", body: "无论是管网拓扑、轨迹时空特征，还是养老场景流程，结构本身就应该进入模型与产品设计。" },
+            { title: "研究也要可用", body: "好的技术结果不仅能写进论文，也要能落到界面、报告和可运行 Demo。" }
+          ],
+          timeline: [
+            { time: "2020.09 - 2024.07", title: "南方科技大学 · 计算机科学与技术（图灵班）", body: "GPA 3.80 / 4.0，打下操作系统、网络、C++、数据结构与算法的系统底座。" },
+            { time: "2023.04 - 2023.09", title: "A*STAR Singapore · Research Assistant", body: "研究长序列 Transformer 的稀疏注意力机制，后续延伸到 PipeFormer 的建模路线。" },
+            { time: "2024.05 - 2024.09", title: "LocationMind Tokyo · GPS 数据处理", body: "把时空特征工程与 Prompt 编码结合，做 Home / Work / Other 的高层语义推理。" },
+            { time: "2024.09 - 至今", title: "北京大学 · 智慧城市与大数据", body: "将城市数据、基础设施场景与 AI 系统能力结合起来，形成当前研究方向。" },
+            { time: "2025.03 - 2025.06", title: "腾讯 TEG · 技术产品 / 大模型评测", body: "构建前端代码生成评测 SOP、自动化数据链路、Badcase 归因和可视化分析体系。" },
+            { time: "2025.07 - 2026.04", title: "Pipeline-Agent / PipeClaw · 论文与系统", body: "围绕天然气管网长期调度做可验证计算、预测-校核-决策闭环与自动化 PDF 运维报告。" }
+          ]
+        },
+        projects: {
+          kicker: "项目",
+          title: "三个主力仓库",
+          desc: "这三个仓库分别覆盖 Agent 工程、以人为中心的产品原型，以及模型结构研究，共同构成当前的主要项目线。",
+          items: [
+            {
+              meta: "管网智能 / Agent 运行时",
+              title: "PipeClaw",
+              image: "./public/assets/projects/pipeclaw-system.png",
+              alt: "PipeClaw 系统界面",
+              intro: "面向天然气管网运行支持的 trace-first Agent 系统，核心原则是先计算、后解释。",
+              points: [
+                { title: "问题", body: "GIS 资产、网络拓扑和时序运行数据混在一起时，纯文本回答很容易掩盖识别错误与不可复核问题。" },
+                { title: "方案", body: "通过显式规划、沙箱脚本执行、可回放中间产物和自动化 PDF 报告，保证计算链路可信。" },
+                { title: "结果", body: "论文报告中，系统平均得分较最优基准模型提升 2.24 倍，较 GPT-5.2 提升 2.56 倍。" }
+              ],
+              tags: ["FastAPI", "Agent Runtime", "Sandbox Execution", "Benchmark Design", "PDF Reports"],
+              links: [
+                { label: "GitHub", href: "https://github.com/zly7/pipeclaw" },
+                { label: "论文", href: "https://www.sciencedirect.com/science/article/pii/S2667143326000429" }
+              ]
+            },
+            {
+              meta: "智慧养老 / 产品原型",
+              title: "Lingxi Smart Eldercare",
+              image: "./public/assets/projects/lingxi-dashboard.png",
+              alt: "灵犀智慧养老界面",
+              intro: "围绕养老院真实照护场景搭建的智慧养老原型，把眼动、场景理解、意图推荐、后端同步和前端展示串成闭环。",
+              points: [
+                { title: "问题", body: "老人“看向哪里”不等于“需要什么”，照护需求必须结合空间、时段、交接流程和高频场景理解。" },
+                { title: "方案", body: "接入 Pupil / VR 采集、VLM 场景描述、LLM 推理、FastAPI、React 看板和语音播报，并用实地调研约束需求空间。" },
+                { title: "落地", body: "项目结合实地养老院调研、问卷与联调记录，形成了从采集到展示的完整原型链路。" }
+              ],
+              tags: ["OpenAI SDK", "Google GenAI", "FastAPI", "React", "VR / Pupil"],
+              links: [
+                { label: "GitHub", href: "https://github.com/zly7/lingxi-eldercare" }
+              ]
+            },
+            {
+              meta: "模型结构 / 瞬态预测",
+              title: "PipeFormer",
+              image: "./public/assets/projects/pipeformer-attention.png",
+              alt: "PipeFormer 稀疏注意力图",
+              intro: "面向大规模天然气管网瞬态预测的 physics-informed tokenized sparse Transformer，强调结构与效率同时成立。",
+              points: [
+                { title: "问题", body: "Full attention 在大拓扑上代价过高，而纯黑盒预测又难以自然表达工程里关心的物理约束。" },
+                { title: "方案", body: "采用 topology-aware sparse attention、离散 tokenization、图构建和 physics-informed objective，平衡准确率与速度。" },
+                { title: "结果", body: "在论文设定下，前向推理时间从 200ms 降到 14.8ms。" }
+              ],
+              tags: ["PyTorch", "Sparse Attention", "Tokenization", "Topology Graph", "Physics Loss"],
+              links: [
+                { label: "GitHub", href: "https://github.com/zly7/pipeFormer" },
+                { label: "论文", href: "https://doi.org/10.1016/j.jpse.2026.100472" }
+              ]
+            }
+          ]
+        },
+        skills: {
+          kicker: "技能",
+          title: "能力矩阵",
+          desc: "这里不堆关键词，重点保留简历里反复出现、并且已经做出成果的能力项。",
+          items: [
+            { title: "AI / 大模型", level: "Advanced", width: "92%", tags: ["PyTorch", "GPT-2 Pretraining", "Transformer Internals", "Qwen SFT", "DPO / PPO / GRPO", "LangChain", "LangGraph"] },
+            { title: "后端 / 数据", level: "Advanced", width: "88%", tags: ["Python", "FastAPI", "Pydantic", "SQL", "Data Cleaning", "Evaluation Pipelines", "Benchmark Automation"] },
+            { title: "前端 / 产品", level: "Strong Working", width: "76%", tags: ["React", "Dashboard UX", "Figma", "Axure", "Evaluation Reports", "Voice Flow"] },
+            { title: "工作流 / 工具链", level: "Systems-Oriented", width: "80%", tags: ["Sandbox Execution", "GitHub Pages", "HF Dataset Packaging", "PDF Report Generation", "Claude Code", "Codex", "Google AI Studio"] }
+          ]
+        },
+        metrics: {
+          kicker: "指标",
+          title: "代表性指标与 GitHub 展示位",
+          desc: "项目中的代表性指标",
+          cards: [
+            { label: "研究", value: "2", body: "两篇唯一一作 SCI Q1 论文，且都落到了可公开展示的工程仓库。" },
+            { label: "基准", value: "80 / 800", body: "Pipeline-Bench 模板数与测试实例数，来自简历中的系统构建部分。" },
+            { label: "评测", value: "92% - 94%", body: "腾讯前端代码生成评测 SOP 重构后的一致性水平。" },
+            { label: "推理", value: "14.8ms", body: "PipeFormer 在论文设定下的稀疏注意力单步推理时间。" }
+          ],
+          heatmapTitle: "GitHub 贡献热力图",
+          heatmapDesc: "用于线上主页的轻量外链嵌入。",
+          placeholderTitle: "公共主页占位模块",
+          placeholderDesc: "这里预留给 GitHub 活跃度、仓库徽章和公开工程内容。",
+          placeholders: [
+            { title: "GitHub Stats 卡片", body: "后续可以换成稳定缓存图，保证视觉风格统一。" },
+            { title: "连续活跃 / Activity Graph", body: "可以作为 GitHub 活跃趋势的补充展示模块。" },
+            { title: "仓库徽章区", body: "适合放 stars、论文链接、数据集链接或三大仓库的展示徽章。" }
+          ]
+        },
+        contact: {
+          kicker: "联系",
+          title: "联系方式与链接",
+          desc: "这里汇总了联系方式、简历入口和项目链接。",
+          cards: [
+            { title: "邮箱", body: "合作交流、项目沟通或进一步联系都可以直接邮件。", linkLabel: "2674793917@qq.com", href: "mailto:2674793917@qq.com" },
+            { title: "GitHub", body: "代码、论文配套仓库和公开工程产物统一放在这里。", linkLabel: "github.com/zly7", href: "https://github.com/zly7" },
+            { title: "简历 PDF", body: "完整中文简历直接对外可分享。", linkLabel: "打开简历 PDF", href: "./public/resume/zly7-resume.pdf" }
+          ]
+        },
+        footer: { left: "zly7 / 张力宇", right: "AI系统工程师 · 大模型工程 · 管网智能" }
+      },
+      en: {
+        metaTitle: "zly7 | AI Systems Engineer",
+        metaDescription: "Portfolio of Zhang Liyu (zly7), focused on verifiable LLM systems, pipeline intelligence, and product-grade AI engineering.",
+        brandRole: "AI Systems Engineer",
+        nav: { about: "About", projects: "Projects", skills: "Skills", metrics: "Metrics", contact: "Contact" },
+        toggle: "中文",
+        hero: {
+          eyebrow: "AI Systems / LLM Engineering / Pipeline Intelligence",
+          lead: "Portfolio focused on LLM engineering, pipeline intelligence, evaluation methodology, and research systems that can actually run.",
+          ctas: { projects: "View Projects", contact: "Contact", resume: "Resume PDF" },
+          stats: [
+            { value: "2 SCI Q1", label: "First-author papers on pipeline decision support and sparse Transformer forecasting." },
+            { value: "80 / 800", label: "Built Pipeline-Bench with 80 templates and 800 evaluation instances." },
+            { value: "92% - 94%", label: "Raised evaluation consistency at Tencent TEG after rebuilding the frontend code-gen SOP." }
+          ],
+          sideKicker: "Profile Snapshot",
+          sideTitle: "PKU · SUSTech · Tencent · A*STAR",
+          badge: "2026 Portfolio",
+          signals: [
+            { value: "2.56x", label: "Pipeline-Agent reported average gain over GPT-5.2 on the released benchmark." },
+            { value: "14.8ms", label: "PipeFormer single-step inference latency under the sparse attention setup." },
+            { value: "LLM + Agent", label: "Covers GPT-2 pretraining, Qwen SFT, DPO-related data work, LangChain, and LangGraph." },
+            { value: "System Integration", label: "Covers backend services, dashboards, benchmark construction, PDF reports, and presentation layers." }
+          ],
+          note: "The work here usually connects models, system workflows, and presentation layers into one implementation path.",
+          subtitles: [
+            "Compute-first agent systems for real industrial workflows.",
+            "LLM engineering that prefers evidence over vibe.",
+            "Sparse topology-aware models for pipeline digital twins.",
+            "Research that can ship as a product-grade demo."
+          ]
+        },
+        about: {
+          kicker: "About",
+          title: "Research, Systems, and Project Work",
+          desc: "This page follows the actual resume timeline: computer science at SUSTech, sparse-attention research at A*STAR, spatiotemporal reasoning at LocationMind, LLM evaluation at Tencent TEG, graduate study at PKU, and the three flagship repositories below.",
+          philosophyTitle: "Engineering Philosophy",
+          philosophy: [
+            { title: "Compute First", body: "I prefer systems that generate scripts, artifacts, and evidence instead of relying on unsupported text-only reasoning." },
+            { title: "Structure Is A Feature", body: "Topology, workflow, and contextual constraints should be modeled directly rather than treated as noise." },
+            { title: "Research Should Be Usable", body: "A strong technical result should also hold up in interfaces, reports, and runnable demos." }
+          ],
+          timeline: [
+            { time: "2020.09 - 2024.07", title: "SUSTech · Computer Science and Technology (Turing Class)", body: "GPA 3.80 / 4.0 with a strong foundation in operating systems, networking, C++, data structures, and algorithms." },
+            { time: "2023.04 - 2023.09", title: "A*STAR Singapore · Research Assistant", body: "Researched sparse attention for long-sequence Transformers, later extending the line into PipeFormer." },
+            { time: "2024.05 - 2024.09", title: "LocationMind Tokyo · GPS Data Processing", body: "Turned spatiotemporal features into prompts for Home / Work / Other semantic reasoning." },
+            { time: "2024.09 - Now", title: "Peking University · Spatial Planning (Smart City and Big Data)", body: "Combining urban data, infrastructure scenarios, and AI systems into the current research direction." },
+            { time: "2025.03 - 2025.06", title: "Tencent TEG · Technical Product / LLM Evaluation", body: "Built SOPs, automated data pipelines, badcase analysis, and visual reports for frontend code generation evaluation." },
+            { time: "2025.07 - 2026.04", title: "Pipeline-Agent / PipeClaw · Paper + System", body: "Built verifiable computation workflows, prediction-check-decision loops, and automated PDF operations reports for natural gas pipelines." }
+          ]
+        },
+        projects: {
+          kicker: "Projects",
+          title: "Three Flagship Repositories",
+          desc: "These three repositories cover agent engineering, human-centered product prototyping, and model architecture research. Together they define the current project line.",
+          items: [
+            {
+              meta: "Pipeline Intelligence / Agent Runtime",
+              title: "PipeClaw",
+              image: "./public/assets/projects/pipeclaw-system.png",
+              alt: "PipeClaw system preview",
+              intro: "A trace-first agent system for natural gas pipeline operations, built around the principle of compute first and explain after.",
+              points: [
+                { title: "Problem", body: "When GIS assets, topology, and time-indexed operational data are mixed together, text-only answers can easily hide identifier and auditability failures." },
+                { title: "Solution", body: "Explicit planning, sandboxed script execution, replayable intermediate artifacts, and automated PDF reporting keep the workflow verifiable." },
+                { title: "Outcome", body: "The paper reports gains of 2.24x over the best baseline and 2.56x over GPT-5.2." }
+              ],
+              tags: ["FastAPI", "Agent Runtime", "Sandbox Execution", "Benchmark Design", "PDF Reports"],
+              links: [
+                { label: "GitHub", href: "https://github.com/zly7/pipeclaw" },
+                { label: "Paper", href: "https://www.sciencedirect.com/science/article/pii/S2667143326000429" }
+              ]
+            },
+            {
+              meta: "Smart Eldercare / Product Prototype",
+              title: "Lingxi Smart Eldercare",
+              image: "./public/assets/projects/lingxi-dashboard.png",
+              alt: "Lingxi eldercare dashboard",
+              intro: "A smart eldercare prototype grounded in real nursing-home scenarios, connecting gaze signals, scene understanding, intent recommendation, backend sync, and frontend presentation.",
+              points: [
+                { title: "Problem", body: "Where an elderly user looks is not the same as what they need. Care demand must be inferred together with space, time, workflow, and scene context." },
+                { title: "Solution", body: "Connected Pupil / VR capture, VLM scene description, LLM reasoning, FastAPI, a React dashboard, and voice broadcast, constrained by field research." },
+                { title: "Implementation", body: "The project combines field research, questionnaires, and joint debugging records into a complete prototype loop from capture to presentation." }
+              ],
+              tags: ["OpenAI SDK", "Google GenAI", "FastAPI", "React", "VR / Pupil"],
+              links: [
+                { label: "GitHub", href: "https://github.com/zly7/lingxi-eldercare" }
+              ]
+            },
+            {
+              meta: "Model Architecture / Forecasting",
+              title: "PipeFormer",
+              image: "./public/assets/projects/pipeformer-attention.png",
+              alt: "PipeFormer sparse attention visualization",
+              intro: "A physics-informed tokenized sparse Transformer for transient forecasting on large natural gas pipeline networks, where structure and efficiency both matter.",
+              points: [
+                { title: "Problem", body: "Full attention is too expensive on large topology graphs, while black-box forecasting alone does not naturally express physical constraints." },
+                { title: "Solution", body: "Used topology-aware sparse attention, discrete tokenization, graph construction, and a physics-informed objective to balance accuracy and speed." },
+                { title: "Outcome", body: "Under the paper setup, forward latency is reduced from 200ms to 14.8ms." }
+              ],
+              tags: ["PyTorch", "Sparse Attention", "Tokenization", "Topology Graph", "Physics Loss"],
+              links: [
+                { label: "GitHub", href: "https://github.com/zly7/pipeFormer" },
+                { label: "Paper", href: "https://doi.org/10.1016/j.jpse.2026.100472" }
+              ]
+            }
+          ]
+        },
+        skills: {
+          kicker: "Skills",
+          title: "Skill Matrix",
+          desc: "This section stays close to what repeatedly appears in the resume instead of inflating keyword density.",
+          items: [
+            { title: "AI / LLM", level: "Advanced", width: "92%", tags: ["PyTorch", "GPT-2 Pretraining", "Transformer Internals", "Qwen SFT", "DPO / PPO / GRPO", "LangChain", "LangGraph"] },
+            { title: "Backend / Data", level: "Advanced", width: "88%", tags: ["Python", "FastAPI", "Pydantic", "SQL", "Data Cleaning", "Evaluation Pipelines", "Benchmark Automation"] },
+            { title: "Frontend / Product", level: "Strong Working", width: "76%", tags: ["React", "Dashboard UX", "Figma", "Axure", "Evaluation Reports", "Voice Flow"] },
+            { title: "Workflow / Tooling", level: "Systems-Oriented", width: "80%", tags: ["Sandbox Execution", "GitHub Pages", "HF Dataset Packaging", "PDF Report Generation", "Claude Code", "Codex", "Google AI Studio"] }
+          ]
+        },
+        metrics: {
+          kicker: "Metrics",
+          title: "Selected Metrics and GitHub Display Slots",
+          desc: "This section collects representative project metrics together with GitHub display modules.",
+          cards: [
+            { label: "Research", value: "2", body: "Two first-author SCI Q1 papers tied to public engineering repositories." },
+            { label: "Benchmark", value: "80 / 800", body: "Pipeline-Bench template count and evaluation instance count cited in the resume." },
+            { label: "Evaluation", value: "92% - 94%", body: "Tencent frontend code generation evaluation consistency after SOP reconstruction." },
+            { label: "Inference", value: "14.8ms", body: "PipeFormer sparse-attention latency from the paper-reported setup." }
+          ],
+          heatmapTitle: "GitHub Contribution Heatmap",
+          heatmapDesc: "Lightweight external embed for the live public page.",
+          placeholderTitle: "Public Profile Placeholder Stack",
+          placeholderDesc: "Reserved slots for GitHub activity, badges, and highlight modules.",
+          placeholders: [
+            { title: "GitHub Stats Card", body: "Can later be replaced with a cached image to keep the visual language fully consistent." },
+            { title: "Contribution Streak / Activity Graph", body: "Useful as an additional module for showing GitHub activity over time." },
+            { title: "Repo Badge Area", body: "A good slot for stars, paper links, dataset links, or highlight badges from the three flagship repos." }
+          ]
+        },
+        contact: {
+          kicker: "Contact",
+          title: "Contact and Links",
+          desc: "This section collects contact details, the resume PDF, and project links.",
+          cards: [
+            { title: "Email", body: "For collaboration, project walkthroughs, or direct communication.", linkLabel: "2674793917@qq.com", href: "mailto:2674793917@qq.com" },
+            { title: "GitHub", body: "Source code, paper companion repos, and public engineering artifacts all live here.", linkLabel: "github.com/zly7", href: "https://github.com/zly7" },
+            { title: "Resume PDF", body: "Full Chinese resume, linked directly for external sharing.", linkLabel: "Open Resume PDF", href: "./public/resume/zly7-resume.pdf" }
+          ]
+        },
+        footer: { left: "zly7 / Zhang Liyu", right: "AI Systems Engineer · LLM Engineering · Pipeline Intelligence" }
+      }
+    };
+
+    const ids = (name) => document.getElementById(name);
+    const titleMeta = document.querySelector("title");
+    const descMeta = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    let currentLang = "zh";
+    let subtitleIndex = 0;
+
+    function renderStats(items, cls) {
+      return items.map((item) => `<div class="card ${cls}"><strong>${item.value}</strong><span>${item.label}</span></div>`).join("");
+    }
+    function renderPhilosophy(items) {
+      return items.map((item) => `<div class="philo"><h3>${item.title}</h3><p>${item.body}</p></div>`).join("");
+    }
+    function renderTimeline(items) {
+      return items.map((item) => `<article><time>${item.time}</time><h3>${item.title}</h3><p>${item.body}</p></article>`).join("");
+    }
+    function renderProjects(items) {
+      return items.map((item) => `
+        <article class="card project">
+          <div class="visual"><img src="${item.image}" alt="${item.alt}" loading="lazy" /></div>
+          <div class="project-meta">${item.meta}</div>
+          <h3>${item.title}</h3>
+          <p>${item.intro}</p>
+          <div class="points">${item.points.map((point) => `<div class="point"><strong>${point.title}</strong>${point.body}</div>`).join("")}</div>
+          <div class="tags">${item.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+          <div class="links">${item.links.map((link) => `<a class="pill" href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>`).join("")}</div>
+        </article>
+      `).join("");
+    }
+    function renderSkills(items) {
+      return items.map((item) => `
+        <article class="card">
+          <div class="skill-head"><h3>${item.title}</h3><span class="skill-meta">${item.level}</span></div>
+          <div class="bar"><span style="width:${item.width}"></span></div>
+          <div class="tags">${item.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+        </article>
+      `).join("");
+    }
+    function renderMetrics(items) {
+      return items.map((item) => `<article class="metric-box"><span class="metric-label">${item.label}</span><span class="metric-number">${item.value}</span><p>${item.body}</p></article>`).join("");
+    }
+    function renderPlaceholders(items) {
+      return items.map((item) => `<div class="placeholder"><strong>${item.title}</strong><p>${item.body}</p></div>`).join("");
+    }
+    function renderContacts(items) {
+      return items.map((item) => `<article class="contact-box"><h3>${item.title}</h3><p>${item.body}</p><p><a href="${item.href}" target="_blank" rel="noreferrer">${item.linkLabel}</a></p></article>`).join("");
+    }
+    function updateSubtitle(subtitles) {
+      ids("rotating-text").textContent = subtitles[subtitleIndex % subtitles.length];
+    }
+    function render(lang) {
+      const data = copy[lang];
+      const { hero, about, projects, skills, metrics, contact } = data;
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      titleMeta.textContent = data.metaTitle;
+      descMeta.setAttribute("content", data.metaDescription);
+      ogTitle.setAttribute("content", data.metaTitle);
+      ogDesc.setAttribute("content", data.metaDescription);
+      ids("brand-role").textContent = data.brandRole;
+      ids("nav-about").textContent = data.nav.about;
+      ids("nav-projects").textContent = data.nav.projects;
+      ids("nav-skills").textContent = data.nav.skills;
+      ids("nav-metrics").textContent = data.nav.metrics;
+      ids("nav-contact").textContent = data.nav.contact;
+      ids("lang-toggle").textContent = data.toggle;
+      ids("hero-eyebrow").textContent = hero.eyebrow;
+      ids("hero-lead").textContent = hero.lead;
+      ids("cta-projects").textContent = hero.ctas.projects;
+      ids("cta-contact").textContent = hero.ctas.contact;
+      ids("cta-resume").textContent = hero.ctas.resume;
+      ids("hero-stats").innerHTML = renderStats(hero.stats, "status");
+      ids("hero-side-kicker").textContent = hero.sideKicker;
+      ids("hero-side-title").textContent = hero.sideTitle;
+      ids("hero-side-badge").textContent = hero.badge;
+      ids("hero-signals").innerHTML = renderStats(hero.signals, "signal");
+      ids("hero-note").textContent = hero.note;
+      ids("about-kicker").textContent = about.kicker;
+      ids("about-title").textContent = about.title;
+      ids("about-desc").textContent = about.desc;
+      ids("philosophy-title").textContent = about.philosophyTitle;
+      ids("philosophy-list").innerHTML = renderPhilosophy(about.philosophy);
+      ids("timeline-list").innerHTML = renderTimeline(about.timeline);
+      ids("projects-kicker").textContent = projects.kicker;
+      ids("projects-title").textContent = projects.title;
+      ids("projects-desc").textContent = projects.desc;
+      ids("projects-grid").innerHTML = renderProjects(projects.items);
+      ids("skills-kicker").textContent = skills.kicker;
+      ids("skills-title").textContent = skills.title;
+      ids("skills-desc").textContent = skills.desc;
+      ids("skills-grid").innerHTML = renderSkills(skills.items);
+      ids("metrics-kicker").textContent = metrics.kicker;
+      ids("metrics-title").textContent = metrics.title;
+      ids("metrics-desc").textContent = metrics.desc;
+      ids("metric-strip").innerHTML = renderMetrics(metrics.cards);
+      ids("heatmap-title").textContent = metrics.heatmapTitle;
+      ids("heatmap-desc").textContent = metrics.heatmapDesc;
+      ids("placeholder-title").textContent = metrics.placeholderTitle;
+      ids("placeholder-desc").textContent = metrics.placeholderDesc;
+      ids("placeholder-list").innerHTML = renderPlaceholders(metrics.placeholders);
+      ids("contact-kicker").textContent = contact.kicker;
+      ids("contact-title").textContent = contact.title;
+      ids("contact-desc").textContent = contact.desc;
+      ids("contact-grid").innerHTML = renderContacts(contact.cards);
+      ids("footer-left").textContent = data.footer.left;
+      ids("footer-right").textContent = data.footer.right;
+      subtitleIndex = 0;
+      updateSubtitle(hero.subtitles);
+    }
+
+    ids("lang-toggle").addEventListener("click", () => {
+      currentLang = currentLang === "zh" ? "en" : "zh";
+      render(currentLang);
+    });
+
+    window.setInterval(() => {
+      const subtitles = copy[currentLang].hero.subtitles;
+      subtitleIndex = (subtitleIndex + 1) % subtitles.length;
+      updateSubtitle(subtitles);
+    }, 2600);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+    render(currentLang);
+  </script>
+</body>
 </html>
+
+
+
+
+
