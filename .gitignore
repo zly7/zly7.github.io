@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local resume source at repo root — the published copy lives in public/resume/.
+# Root-level PDFs (esp. with spaces/non-ASCII names) can break GitHub Pages deploys.
+/*.pdf
