@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>zly7 | AI系统工程师</title>
-  <meta name="description" content="张力宇（zly7）个人作品集，聚焦可验证大模型系统、管网智能与产品化AI工程。" />
+  <meta name="description" content="张力宇（zly7）个人作品集：字节跳动算法、小语言模型强化学习、隐私分类链路，以及可验证管网 Agent 与稀疏 Transformer 研究。" />
   <meta name="theme-color" content="#0B1020" />
   <meta property="og:title" content="zly7 | AI系统工程师" />
-  <meta property="og:description" content="张力宇（zly7）个人作品集，展示 PipeClaw、PipeFormer 与灵犀智慧养老等主力项目。" />
+  <meta property="og:description" content="张力宇（zly7）个人作品集：字节跳动算法（小模型 RL / 隐私分类），以及 PipeClaw、PipeFormer 与灵犀智慧养老等主力项目。" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./public/assets/projects/pipeclaw-system.png" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2336BCF7'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230B1020'/%3E%3Cpath d='M18 18h28v8L28 46h18v8H18v-8l18-20H18z' fill='url(%23g)'/%3E%3C/svg%3E" />
@@ -38,12 +38,13 @@
     h1,h2,h3,p { margin:0; }
     h1 { font-size:clamp(3rem,9vw,6.2rem); line-height:.95; letter-spacing:-.05em; }
     h2 { font-size:clamp(2rem,5vw,3.2rem); line-height:1; letter-spacing:-.04em; }
-    .hero,.about-grid,.project-grid,.skills-grid,.metrics-grid,.contact-grid,.status-grid,.signal-grid,.metric-strip { display:grid; gap:18px; }
-    .hero { min-height:calc(100vh - 120px); align-items:center; grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr); }
+    .hero,.project-grid,.skills-grid,.metrics-grid,.contact-grid,.status-grid,.metric-strip { display:grid; gap:18px; }
+    .hero { min-height:calc(100vh - 160px); align-items:center; grid-template-columns:1fr; }
+    .hero > div { max-width:860px; }
     .eyebrow { display:inline-flex; align-items:center; gap:10px; margin-bottom:18px; padding:8px 14px; border:1px solid rgba(54,188,247,.2); border-radius:999px; color:var(--teal); background:rgba(9,16,31,.72); font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; }
     .eyebrow::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 18px rgba(34,211,238,.8); }
     .accent { display:block; color:transparent; background:linear-gradient(135deg,#f8fbff 10%,var(--cyan) 50%,var(--violet) 100%); -webkit-background-clip:text; background-clip:text; }
-    .lead,.desc,.card p,.timeline p,.hero-note,.point,.placeholder,.contact-box p,.metric-box p { color:var(--muted); line-height:1.75; }
+    .lead,.desc,.card p,.timeline p,.point,.placeholder,.contact-box p,.metric-box p { color:var(--muted); line-height:1.75; }
     .lead { margin-top:18px; max-width:760px; font-size:clamp(1rem,2vw,1.14rem); }
     .terminal { display:inline-flex; align-items:center; gap:10px; margin-top:22px; min-height:32px; color:#c6fff7; font-family:"IBM Plex Mono",monospace; font-size:.96rem; }
     .terminal::before { content:">"; color:var(--cyan); }
@@ -56,23 +57,18 @@
     .secondary,.pill { border:1px solid var(--line); background:rgba(15,23,42,.72); }
     .tertiary { border:1px solid rgba(139,92,246,.3); color:#d7cdff; background:rgba(35,25,60,.46); }
     .status-grid { margin-top:22px; grid-template-columns:repeat(3,minmax(0,1fr)); }
-    .card,.hero-side,.metric-box,.embed,.contact-box { padding:20px; border:1px solid rgba(148,163,184,.14); border-radius:18px; background:linear-gradient(180deg,rgba(15,23,42,.74),rgba(9,16,31,.86)); }
-    .status strong,.signal strong,.metric-number { display:block; margin-bottom:6px; font-size:1.5rem; color:#f8fbff; }
-    .status span,.signal span { color:var(--muted); line-height:1.6; font-size:.92rem; }
-    .hero-side { border-color:rgba(54,188,247,.18); }
-    .hero-head,.section-head,.footer { display:flex; justify-content:space-between; align-items:end; gap:18px; }
-    .signal-grid { margin-top:18px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .card,.metric-box,.embed,.contact-box { padding:20px; border:1px solid rgba(148,163,184,.14); border-radius:18px; background:linear-gradient(180deg,rgba(15,23,42,.74),rgba(9,16,31,.86)); }
+    .status strong,.metric-number { display:block; margin-bottom:6px; font-size:1.5rem; color:#f8fbff; }
+    .status span { color:var(--muted); line-height:1.6; font-size:.92rem; }
+    .section-head,.footer { display:flex; justify-content:space-between; align-items:end; gap:18px; }
     .kicker { display:inline-flex; align-items:center; gap:10px; margin-bottom:12px; color:var(--cyan); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
     .kicker::before { content:""; width:34px; height:1px; background:linear-gradient(90deg,transparent,var(--cyan)); }
     .desc { max-width:680px; }
-    .about-grid { grid-template-columns:minmax(0,1.02fr) minmax(280px,.98fr); align-items:start; }
     .stack,.timeline,.points,.placeholder-list { display:grid; gap:14px; }
-    .philo { padding:18px; border-left:2px solid rgba(54,188,247,.4); border-radius:0 18px 18px 0; background:rgba(10,16,30,.66); }
-    .philo h3,.point strong,.placeholder strong { display:block; margin-bottom:8px; color:#f8fbff; }
+    .point strong,.placeholder strong { display:block; margin-bottom:8px; color:#f8fbff; }
+    .timeline { grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
     .timeline article { position:relative; padding:18px 18px 18px 56px; border:1px solid rgba(148,163,184,.12); border-radius:18px; background:rgba(8,13,24,.82); }
     .timeline article::before { content:""; position:absolute; top:24px; left:22px; width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,var(--cyan),var(--violet)); box-shadow:0 0 20px rgba(54,188,247,.38); }
-    .timeline article::after { content:""; position:absolute; top:42px; left:28px; bottom:-20px; width:2px; background:linear-gradient(180deg,rgba(54,188,247,.3),transparent); }
-    .timeline article:last-child::after { display:none; }
     .timeline time { display:block; margin-bottom:8px; color:var(--cyan); font-size:.8rem; }
     .project-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
     .project { display:flex; flex-direction:column; }
@@ -83,11 +79,36 @@
     .tags { margin-top:18px; }
     .tag { display:inline-flex; align-items:center; min-height:34px; padding:0 12px; border-radius:999px; border:1px solid rgba(54,188,247,.16); background:rgba(12,20,36,.84); color:#cbeefd; font-size:.82rem; }
     .links { margin-top:auto; padding-top:20px; }
+    .exp-list { display:grid; gap:18px; }
+    .exp-card { position:relative; padding:24px clamp(18px,2.4vw,28px); border:1px solid rgba(148,163,184,.14); border-radius:24px; background:linear-gradient(180deg,rgba(15,23,42,.72),rgba(9,16,31,.9)); overflow:hidden; }
+    .exp-card::after { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--cyan),var(--violet)); opacity:.85; }
+    .exp-card.current { border-color:rgba(54,188,247,.34); box-shadow:0 0 0 1px rgba(54,188,247,.12),0 24px 60px rgba(2,6,23,.5); }
+    .exp-top { display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; margin-bottom:6px; }
+    .exp-co { display:flex; align-items:center; gap:12px; font-size:clamp(1.3rem,2.6vw,1.7rem); font-weight:700; color:#f8fbff; letter-spacing:-.01em; }
+    .exp-logo { width:40px; height:40px; border-radius:12px; display:grid; place-items:center; font-family:"IBM Plex Mono",monospace; font-size:.9rem; font-weight:600; color:#06121f; background:linear-gradient(135deg,var(--cyan),var(--teal)); box-shadow:0 8px 22px rgba(34,211,238,.26); }
+    .exp-role { padding:4px 12px; border-radius:999px; border:1px solid rgba(139,92,246,.34); background:rgba(35,25,60,.5); color:#dcd2ff; font-family:"IBM Plex Mono",monospace; font-size:.76rem; letter-spacing:.06em; text-transform:uppercase; }
+    .exp-period { margin-left:auto; display:inline-flex; align-items:center; gap:8px; color:var(--cyan); font-family:"IBM Plex Mono",monospace; font-size:.82rem; letter-spacing:.04em; }
+    .exp-live { width:8px; height:8px; border-radius:50%; background:#34f5c5; box-shadow:0 0 0 0 rgba(52,245,197,.6); animation:pulse 2s ease-out infinite; }
+    .exp-summary { margin:8px 0 20px; color:var(--muted); line-height:1.7; max-width:900px; }
+    .exp-projects { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+    .exp-project { display:flex; flex-direction:column; padding:18px; border-radius:18px; border:1px solid rgba(148,163,184,.13); background:rgba(8,13,24,.72); }
+    .exp-project h4 { margin:0 0 6px; font-size:1.06rem; color:#f4f8ff; letter-spacing:-.01em; }
+    .exp-project > p { color:var(--muted); line-height:1.65; font-size:.92rem; margin-bottom:14px; }
+    .exp-metrics { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+    .exp-metric { flex:1 1 130px; padding:11px 13px; border-radius:14px; background:linear-gradient(160deg,rgba(54,188,247,.12),rgba(139,92,246,.1)); border:1px solid rgba(54,188,247,.18); }
+    .exp-metric b { display:block; font-family:"IBM Plex Mono",monospace; font-size:1.14rem; font-weight:600; letter-spacing:-.01em; color:transparent; background:linear-gradient(135deg,#eafcff,var(--cyan) 60%,var(--violet)); -webkit-background-clip:text; background-clip:text; }
+    .exp-metric span { display:block; margin-top:3px; color:var(--muted); font-size:.76rem; line-height:1.45; }
+    .exp-points { display:grid; gap:8px; margin-bottom:14px; }
+    .exp-points div { position:relative; padding-left:18px; color:var(--muted); font-size:.88rem; line-height:1.6; }
+    .exp-points div::before { content:""; position:absolute; left:2px; top:9px; width:6px; height:6px; border-radius:50%; background:linear-gradient(135deg,var(--cyan),var(--violet)); }
+    .exp-points strong { color:#e9f1ff; }
+    .exp-project .tags { margin-top:auto; }
+    @keyframes pulse { 0% { box-shadow:0 0 0 0 rgba(52,245,197,.55); } 70% { box-shadow:0 0 0 9px rgba(52,245,197,0); } 100% { box-shadow:0 0 0 0 rgba(52,245,197,0); } }
     .skills-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     .skill-head { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:14px; }
     .skill-meta { color:var(--muted); font-family:"IBM Plex Mono",monospace; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; }
     .bar { position:relative; width:100%; height:10px; margin-bottom:16px; overflow:hidden; border-radius:999px; background:rgba(51,65,85,.58); }
-    .bar span { position:absolute; inset:0 auto 0 0; border-radius:inherit; background:linear-gradient(90deg,var(--cyan),var(--violet)); }
+    .bar span { position:absolute; inset:0 auto 0 0; border-radius:inherit; background:linear-gradient(90deg,var(--cyan),var(--violet)); transition:width 1.1s cubic-bezier(.2,.7,.2,1); }
     .metric-strip { grid-template-columns:repeat(4,minmax(0,1fr)); margin-bottom:20px; }
     .metric-number { font-size:clamp(1.7rem,4vw,2.4rem); font-weight:700; }
     .metrics-grid { grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr); }
@@ -97,8 +118,8 @@
     .reveal { opacity:0; transform:translateY(24px); transition:opacity .5s ease,transform .5s ease; }
     .reveal.show { opacity:1; transform:translateY(0); }
     @keyframes blink { 50% { opacity:0; } }
-    @media (max-width:1024px) { .hero,.about-grid,.project-grid,.skills-grid,.metrics-grid,.contact-grid,.metric-strip { grid-template-columns:1fr; } .status-grid,.signal-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .header,.section-head,.footer { flex-direction:column; align-items:flex-start; } .header-right,.nav { width:100%; justify-content:flex-start; overflow-x:auto; } }
-    @media (max-width:680px) { .page { width:min(calc(100% - 20px), var(--container)); } .header { top:8px; margin-top:8px; border-radius:24px; } section { padding:24px 18px; border-radius:24px; } h1 { font-size:clamp(2.6rem,17vw,4.2rem); } .status-grid,.signal-grid { grid-template-columns:1fr; } .btn,.pill { width:100%; } }
+    @media (max-width:1024px) { .hero,.project-grid,.skills-grid,.metrics-grid,.contact-grid,.metric-strip { grid-template-columns:1fr; } .status-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .header,.section-head,.footer { flex-direction:column; align-items:flex-start; } .header-right,.nav { width:100%; justify-content:flex-start; overflow-x:auto; } }
+    @media (max-width:680px) { .page { width:min(calc(100% - 20px), var(--container)); } .header { top:8px; margin-top:8px; border-radius:24px; } section { padding:24px 18px; border-radius:24px; } h1 { font-size:clamp(2.6rem,17vw,4.2rem); } .status-grid { grid-template-columns:1fr; } .btn,.pill { width:100%; } .exp-period { margin-left:0; width:100%; } .exp-projects { grid-template-columns:1fr; } }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none !important; transition:none !important; } .reveal { opacity:1; transform:none; } }
   </style>
 </head>
@@ -109,6 +130,7 @@
       <div class="header-right">
         <nav class="nav" aria-label="Primary navigation">
           <a id="nav-about" href="#about"></a>
+          <a id="nav-experience" href="#experience"></a>
           <a id="nav-projects" href="#projects"></a>
           <a id="nav-skills" href="#skills"></a>
           <a id="nav-metrics" href="#metrics"></a>
@@ -132,11 +154,6 @@
           </div>
           <div id="hero-stats" class="status-grid"></div>
         </div>
-        <aside class="hero-side">
-          <div class="hero-head"><div><div id="hero-side-kicker" class="mono"></div><strong id="hero-side-title"></strong></div><div id="hero-side-badge" class="tag"></div></div>
-          <div id="hero-signals" class="signal-grid"></div>
-          <p id="hero-note" class="hero-note"></p>
-        </aside>
       </section>
 
       <section id="about" class="reveal">
@@ -144,10 +161,15 @@
           <div><div id="about-kicker" class="kicker"></div><h2 id="about-title"></h2></div>
           <p id="about-desc" class="desc"></p>
         </div>
-        <div class="about-grid">
-          <div class="card"><h3 id="philosophy-title"></h3><div id="philosophy-list" class="stack"></div></div>
-          <div id="timeline-list" class="timeline"></div>
+        <div id="timeline-list" class="timeline"></div>
+      </section>
+
+      <section id="experience" class="reveal">
+        <div class="section-head">
+          <div><div id="experience-kicker" class="kicker"></div><h2 id="experience-title"></h2></div>
+          <p id="experience-desc" class="desc"></p>
         </div>
+        <div id="experience-list" class="exp-list"></div>
       </section>
 
       <section id="projects" class="reveal">
@@ -195,53 +217,117 @@
     const copy = {
       zh: {
         metaTitle: "zly7 | AI系统工程师",
-        metaDescription: "张力宇（zly7）个人作品集，聚焦可验证大模型系统、管网智能与产品化AI工程。",
+        metaDescription: "张力宇（zly7）个人作品集：字节跳动算法、小语言模型强化学习、隐私分类链路，以及可验证管网 Agent 与稀疏 Transformer 研究。",
         brandRole: "AI系统工程师",
-        nav: { about: "关于", projects: "项目", skills: "技能", metrics: "指标", contact: "联系" },
+        nav: { about: "关于", experience: "经历", projects: "项目", skills: "技能", metrics: "指标", contact: "联系" },
         toggle: "EN",
         hero: {
-          eyebrow: "AI系统工程 / 大模型 / Pipeline Intelligence",
-          lead: "聚焦大模型工程、管网智能、评测方法论与可运行的研究型产品。",
+          eyebrow: "字节跳动 算法 · 大模型工程 · Pipeline Intelligence",
+          lead: "现于字节跳动做算法：小语言模型强化学习、隐私分类链路，以及管网 Agent 与稀疏 Transformer 研究。",
           ctas: { projects: "查看项目", contact: "联系我", resume: "查看简历 PDF" },
           stats: [
-            { value: "2篇 SCI Q1", label: "唯一一作论文分别落在管网决策系统与稀疏 Transformer 预测方向。" },
-            { value: "80 / 800", label: "构建 Pipeline-Bench，包含 80 个模板与 800 个测试实例。" },
-            { value: "92% - 94%", label: "在腾讯 TEG 重构前端代码生成评测 SOP 后提升评测一致性。" }
+            { value: "42% → 50%", label: "字节财务 Agent：qwen3.5-4b 经 GRPO 训练后，docx / sheet 简单任务 pass@1 提升。" },
+            { value: "2 篇 SCI Q1", label: "唯一一作论文分别落在管网决策系统与稀疏 Transformer 预测方向。" },
+            { value: "80 / 800", label: "构建 Pipeline-Bench，包含 80 个模板与 800 个测试实例。" }
           ],
-          sideKicker: "经历摘要",
-          sideTitle: "北大 · 南科大 · 腾讯 · 东京LocationMind · 新加坡A*STAR",
-          badge: "2026 作品集",
-          signals: [
-            { value: "2.56x", label: "Pipeline-Agent 在论文报告中相对 GPT-5.2 的平均得分提升。" },
-            { value: "14.8ms", label: "PipeFormer 在稀疏注意力设置下的单步前向推理时间。" },
-            { value: "LLM + Agent", label: "覆盖 GPT-2 预训练、Qwen SFT、DPO 相关数据工作，以及 LangChain 与 LangGraph。" },
-            { value: "系统整合", label: "覆盖后端、看板、基准构建、PDF 报告与项目展示层。" }
-          ],
-          note: "工作内容主要落在模型、系统流程与展示层的一体化实现。",
           subtitles: [
+            "用更小的模型，把高成本调用换成可训练的能力。",
             "先算后说的 Agent 系统，适合真实工业任务。",
             "偏好证据链，而不是只会流畅表达的大模型工程。",
-            "面向管网数字孪生的拓扑感知稀疏建模。",
-            "把研究做成能展示、能运行、能解释的产品原型。"
+            "面向管网数字孪生的拓扑感知稀疏建模。"
           ]
         },
         about: {
           kicker: "关于",
           title: "围绕研究、工程与项目展开",
-          desc: "南科大计算机本科学习、A*STAR 稀疏注意力研究、LocationMind 时空推理、腾讯 TEG 大模型评测、北大硕士阶段研究，以及下面核心项目。",
-          philosophyTitle: "工程理念",
-          philosophy: [
-            { title: "先计算，再解释", body: "我更偏好能生成脚本、中间产物和证据链的系统，而不是只靠文本推理硬答。" },
-            { title: "结构不是噪声", body: "无论是管网拓扑、轨迹时空特征，还是养老场景流程，结构本身就应该进入模型与产品设计。" },
-            { title: "研究也要可用", body: "好的技术结果不仅能写进论文，也要能落到界面、报告和可运行 Demo。" }
-          ],
+          desc: "从南科大计算机本科、A*STAR 稀疏注意力研究、LocationMind 时空推理、腾讯 TEG 大模型评测，到北大硕士研究与字节跳动算法工作，以及下面的核心项目。",
           timeline: [
             { time: "2020.09 - 2024.07", title: "南方科技大学 · 计算机科学与技术（图灵班）", body: "GPA 3.80 / 4.0，打下操作系统、网络、C++、数据结构与算法的系统底座。" },
             { time: "2023.04 - 2023.09", title: "A*STAR Singapore · Research Assistant", body: "研究长序列 Transformer 的稀疏注意力机制，后续延伸到 PipeFormer 的建模路线。" },
             { time: "2024.05 - 2024.09", title: "LocationMind Tokyo · GPS 数据处理", body: "把时空特征工程与 Prompt 编码结合，做 Home / Work / Other 的高层语义推理。" },
             { time: "2024.09 - 至今", title: "北京大学 · 智慧城市与大数据", body: "将城市数据、基础设施场景与 AI 系统能力结合起来，形成当前研究方向。" },
             { time: "2025.03 - 2025.06", title: "腾讯 TEG · 技术产品 / 大模型评测", body: "构建前端代码生成评测 SOP、自动化数据链路、Badcase 归因和可视化分析体系。" },
-            { time: "2025.07 - 2026.04", title: "Pipeline-Agent / PipeClaw · 论文与系统", body: "围绕天然气管网长期调度做可验证计算、预测-校核-决策闭环与自动化 PDF 运维报告。" }
+            { time: "2025.07 - 2026.04", title: "Pipeline-Agent / PipeClaw · 论文与系统", body: "围绕天然气管网长期调度做可验证计算、预测-校核-决策闭环与自动化 PDF 运维报告。" },
+            { time: "2026.04 - 至今", title: "字节跳动 · 算法", body: "为内部大模型系统做小语言模型强化学习与隐私分类：财务 Agent 的 qwen3.5-4b GRPO 训练，以及 Mira TrustLayer 的级联隐私检测。" }
+          ]
+        },
+        experience: {
+          kicker: "工业界经历",
+          title: "大模型工程实战",
+          desc: "在字节跳动与腾讯的算法/技术产品工作，核心是用更小、更省、可训练的模型链路替代高成本调用，并让评测与数据流程能落地。",
+          items: [
+            {
+              company: "字节跳动",
+              logo: "字节",
+              role: "算法",
+              period: "2026.04 - 至今",
+              current: true,
+              summary: "面向内部大模型系统，探索用小语言模型强化学习替代部分高成本调用，并构建隐私检测的级联分类链路。",
+              projects: [
+                {
+                  name: "财务 Agent · 小模型强化学习",
+                  intro: "内部财务 Agent 依赖 doubao-2.0-pro，申请的 TPM 常被打满；针对操作飞书文档的简单任务，验证小模型能否顶上。",
+                  metrics: [
+                    { value: "42% → 50%", label: "qwen3.5-4b 在 docx / sheet 简单任务 pass@1" },
+                    { value: "10 → 4 min", label: "verl full async 后的单步训练耗时" }
+                  ],
+                  points: [
+                    { title: "构建 RL 训练集", body: "对比小模型调用 lark-cli 的成功率与速度，选定 qwen3.5-4b；弃用 opencode 改为轻量 bash agent，为每种用法合成 142 个问题，并以 pass@8 均分 1–7 的 50 道线上题作为训练集。" },
+                    { title: "并行 rollout 训练", body: "搭建真实并行 rollout 的可验证 reward 环境，在 3×A100 上做 GRPO，调 max-length 并用 verl full async 把单步从 10 分钟压到 4 分钟。" }
+                  ],
+                  tags: ["qwen3.5-4b", "GRPO", "verl", "lark-cli", "Bash Agent", "3×A100"]
+                },
+                {
+                  name: "Mira TrustLayer · 隐私文本分类",
+                  intro: "为内部智能体 Mira 做隐私信息检测：命中隐私即从外部 Claude 降级到内部 doubao，模型链路需兼顾召回、精确率与速度。",
+                  metrics: [
+                    { value: "70% → 78%", label: "技术方案标签精确率（固定 90% 召回）" },
+                    { value: "85%+", label: "结合关键词撞库后 90% 召回下的准确率" }
+                  ],
+                  points: [
+                    { title: "级联架构选型", body: "用 vLLM / SGLang 对比 qwen3.5、gemma4 等模型的投机解码速度，落定 mmBERT 一次筛选 → qwen3.5-4b 二次确认的级联链路。" },
+                    { title: "数据清洗与归因", body: "doubao-lite 全量清洗 → doubao-pro 二次确认 → 人工确认，迭代标注标准；定位“仅含网址/配置被误标”问题，重构清洗链路后技术方案、财务数据、战略决策标签精确率同步提升。" }
+                  ],
+                  tags: ["mmBERT", "qwen3.5-4b", "vLLM", "SGLang", "级联架构", "投机解码"]
+                }
+              ]
+            },
+            {
+              company: "腾讯 TEG",
+              logo: "TEG",
+              role: "技术产品",
+              period: "2025.03 - 2025.06",
+              current: false,
+              summary: "负责大模型理科（STEM）与前端代码生成能力的评测集构建、数据清洗与效果分析，推动模型 SFT 与 DPO 迭代。",
+              projects: [
+                {
+                  name: "评测体系 · 标准化与自动化",
+                  intro: "重构前端代码生成的人工评测 SOP，并把小众理科竞赛数据的处理链路自动化。",
+                  metrics: [
+                    { value: "80% → 92-94%", label: "众包标注一致性与准确率" },
+                    { value: "OCR + LLM", label: "Mistral OCR 提取 + LLM 整理的自动化链路" }
+                  ],
+                  points: [
+                    { title: "对齐核心需求", body: "调 API 给出每题“题目级核心需求”对齐方案，消除人工打分的主观歧义，保证评估数据可信度。" },
+                    { title: "理科数据链路", body: "用 LangChain 设计“Mistral AI OCR 提取 + LLM 整理”的自动化工作流，高效构建高难度数学/物理黑盒测试集。" }
+                  ],
+                  tags: ["LangChain", "Mistral OCR", "评测 SOP", "SFT / DPO", "众包标注"]
+                },
+                {
+                  name: "归因分析 · 可视化报告",
+                  intro: "主导 SFT 与 DPO 模型（ZeroBase vs Pv2.1.5）的效果对比与 Badcase 归因。",
+                  metrics: [
+                    { value: "周级看板", label: "自动化生成分领域能力变化报告" },
+                    { value: "DOM / WebGL / TS", label: "输出前端能力覆盖度报告" }
+                  ],
+                  points: [
+                    { title: "可视化分析", body: "编写脚本自动生成评测报告，前端页面直观展示 SFT 与 DPO 得分差异、Badcase 详情与能力分布。" },
+                    { title: "关键问题定位", body: "通过 Badcase 发现“视觉审美提升但逻辑能力（变量定义、死链）劣化”，为下一轮微调提供数据清洗与策略方向。" }
+                  ],
+                  tags: ["Badcase 分析", "可视化", "能力覆盖度", "模型归因"]
+                }
+              ]
+            }
           ]
         },
         projects: {
@@ -306,7 +392,7 @@
           title: "能力矩阵",
           desc: "这里不堆关键词，重点保留简历里反复出现、并且已经做出成果的能力项。",
           items: [
-            { title: "AI / 大模型", level: "Advanced", width: "92%", tags: ["PyTorch", "GPT-2 Pretraining", "Transformer Internals", "Qwen SFT", "DPO / PPO / GRPO", "LangChain", "LangGraph"] },
+            { title: "AI / 大模型", level: "Advanced", width: "94%", tags: ["PyTorch", "GPT-2 预训练", "魔改 Transformer", "Qwen SFT", "verl GRPO / DPO", "并行 Rollout Reward", "vLLM / SGLang", "mmBERT 级联", "LangChain / LangGraph"] },
             { title: "后端 / 数据", level: "Advanced", width: "88%", tags: ["Python", "FastAPI", "Pydantic", "SQL", "Data Cleaning", "Evaluation Pipelines", "Benchmark Automation"] },
             { title: "前端 / 产品", level: "Strong Working", width: "76%", tags: ["React", "Dashboard UX", "Figma", "Axure", "Evaluation Reports", "Voice Flow"] },
             { title: "工作流 / 工具链", level: "Systems-Oriented", width: "80%", tags: ["Sandbox Execution", "GitHub Pages", "HF Dataset Packaging", "PDF Report Generation", "Claude Code", "Codex", "Google AI Studio"] }
@@ -315,11 +401,11 @@
         metrics: {
           kicker: "指标",
           title: "代表性指标与 GitHub 展示位",
-          desc: "项目中的代表性指标",
+          desc: "工业界与研究项目中的代表性数字。",
           cards: [
+            { label: "强化学习", value: "50%", body: "字节财务 Agent：qwen3.5-4b 经 GRPO 训练后，docx / sheet 简单任务 pass@1 从 42% 升到 50%。" },
+            { label: "隐私分类", value: "78%", body: "mmBERT→qwen3.5-4b 级联后，固定 90% 召回下技术方案标签精确率从 70% 升到 78%。" },
             { label: "研究", value: "2", body: "两篇唯一一作 SCI Q1 论文，且都落到了可公开展示的工程仓库。" },
-            { label: "基准", value: "80 / 800", body: "Pipeline-Bench 模板数与测试实例数，来自简历中的系统构建部分。" },
-            { label: "评测", value: "92% - 94%", body: "腾讯前端代码生成评测 SOP 重构后的一致性水平。" },
             { label: "推理", value: "14.8ms", body: "PipeFormer 在论文设定下的稀疏注意力单步推理时间。" }
           ],
           heatmapTitle: "GitHub 贡献热力图",
@@ -346,53 +432,117 @@
       },
       en: {
         metaTitle: "zly7 | AI Systems Engineer",
-        metaDescription: "Portfolio of Zhang Liyu (zly7), focused on verifiable LLM systems, pipeline intelligence, and product-grade AI engineering.",
+        metaDescription: "Portfolio of Zhang Liyu (zly7): ByteDance algorithm work (small-model RL, privacy classification), plus verifiable pipeline agents and sparse Transformer research.",
         brandRole: "AI Systems Engineer",
-        nav: { about: "About", projects: "Projects", skills: "Skills", metrics: "Metrics", contact: "Contact" },
+        nav: { about: "About", experience: "Experience", projects: "Projects", skills: "Skills", metrics: "Metrics", contact: "Contact" },
         toggle: "中文",
         hero: {
-          eyebrow: "AI Systems / LLM Engineering / Pipeline Intelligence",
-          lead: "Portfolio focused on LLM engineering, pipeline intelligence, evaluation methodology, and research systems that can actually run.",
+          eyebrow: "ByteDance Algorithm · LLM Engineering · Pipeline Intelligence",
+          lead: "Now an algorithm engineer at ByteDance: small-model reinforcement learning, privacy classification pipelines, plus pipeline agents and sparse Transformer research.",
           ctas: { projects: "View Projects", contact: "Contact", resume: "Resume PDF" },
           stats: [
+            { value: "42% → 50%", label: "ByteDance finance agent: qwen3.5-4b pass@1 on docx / sheet tasks after GRPO training." },
             { value: "2 SCI Q1", label: "First-author papers on pipeline decision support and sparse Transformer forecasting." },
-            { value: "80 / 800", label: "Built Pipeline-Bench with 80 templates and 800 evaluation instances." },
-            { value: "92% - 94%", label: "Raised evaluation consistency at Tencent TEG after rebuilding the frontend code-gen SOP." }
+            { value: "80 / 800", label: "Built Pipeline-Bench with 80 templates and 800 evaluation instances." }
           ],
-          sideKicker: "Profile Snapshot",
-          sideTitle: "PKU · SUSTech · Tencent · A*STAR",
-          badge: "2026 Portfolio",
-          signals: [
-            { value: "2.56x", label: "Pipeline-Agent reported average gain over GPT-5.2 on the released benchmark." },
-            { value: "14.8ms", label: "PipeFormer single-step inference latency under the sparse attention setup." },
-            { value: "LLM + Agent", label: "Covers GPT-2 pretraining, Qwen SFT, DPO-related data work, LangChain, and LangGraph." },
-            { value: "System Integration", label: "Covers backend services, dashboards, benchmark construction, PDF reports, and presentation layers." }
-          ],
-          note: "The work here usually connects models, system workflows, and presentation layers into one implementation path.",
           subtitles: [
+            "Smaller models that turn costly API calls into trainable skills.",
             "Compute-first agent systems for real industrial workflows.",
             "LLM engineering that prefers evidence over vibe.",
-            "Sparse topology-aware models for pipeline digital twins.",
-            "Research that can ship as a product-grade demo."
+            "Sparse topology-aware models for pipeline digital twins."
           ]
         },
         about: {
           kicker: "About",
           title: "Research, Systems, and Project Work",
-          desc: "This page follows the actual resume timeline: computer science at SUSTech, sparse-attention research at A*STAR, spatiotemporal reasoning at LocationMind, LLM evaluation at Tencent TEG, graduate study at PKU, and the three flagship repositories below.",
-          philosophyTitle: "Engineering Philosophy",
-          philosophy: [
-            { title: "Compute First", body: "I prefer systems that generate scripts, artifacts, and evidence instead of relying on unsupported text-only reasoning." },
-            { title: "Structure Is A Feature", body: "Topology, workflow, and contextual constraints should be modeled directly rather than treated as noise." },
-            { title: "Research Should Be Usable", body: "A strong technical result should also hold up in interfaces, reports, and runnable demos." }
-          ],
+          desc: "This page follows the actual resume timeline: computer science at SUSTech, sparse-attention research at A*STAR, spatiotemporal reasoning at LocationMind, LLM evaluation at Tencent TEG, graduate study at PKU, algorithm work at ByteDance, and the three flagship repositories below.",
           timeline: [
             { time: "2020.09 - 2024.07", title: "SUSTech · Computer Science and Technology (Turing Class)", body: "GPA 3.80 / 4.0 with a strong foundation in operating systems, networking, C++, data structures, and algorithms." },
             { time: "2023.04 - 2023.09", title: "A*STAR Singapore · Research Assistant", body: "Researched sparse attention for long-sequence Transformers, later extending the line into PipeFormer." },
             { time: "2024.05 - 2024.09", title: "LocationMind Tokyo · GPS Data Processing", body: "Turned spatiotemporal features into prompts for Home / Work / Other semantic reasoning." },
             { time: "2024.09 - Now", title: "Peking University · Spatial Planning (Smart City and Big Data)", body: "Combining urban data, infrastructure scenarios, and AI systems into the current research direction." },
             { time: "2025.03 - 2025.06", title: "Tencent TEG · Technical Product / LLM Evaluation", body: "Built SOPs, automated data pipelines, badcase analysis, and visual reports for frontend code generation evaluation." },
-            { time: "2025.07 - 2026.04", title: "Pipeline-Agent / PipeClaw · Paper + System", body: "Built verifiable computation workflows, prediction-check-decision loops, and automated PDF operations reports for natural gas pipelines." }
+            { time: "2025.07 - 2026.04", title: "Pipeline-Agent / PipeClaw · Paper + System", body: "Built verifiable computation workflows, prediction-check-decision loops, and automated PDF operations reports for natural gas pipelines." },
+            { time: "2026.04 - Now", title: "ByteDance · Algorithm", body: "Small-model reinforcement learning and privacy classification for internal LLM systems: qwen3.5-4b GRPO for the finance agent and a cascaded privacy detector for Mira TrustLayer." }
+          ]
+        },
+        experience: {
+          kicker: "Industry Experience",
+          title: "LLM Engineering In Production",
+          desc: "Algorithm and technical-product work at ByteDance and Tencent, centered on replacing costly API calls with smaller, trainable model pipelines and making evaluation and data flows actually ship.",
+          items: [
+            {
+              company: "ByteDance",
+              logo: "字节",
+              role: "Algorithm",
+              period: "2026.04 - Now",
+              current: true,
+              summary: "For internal LLM systems, exploring small-model reinforcement learning to replace part of the costly calls, and building a cascaded classification pipeline for privacy detection.",
+              projects: [
+                {
+                  name: "Finance Agent · Small-Model RL",
+                  intro: "The internal finance agent relies on doubao-2.0-pro and often hits its requested TPM ceiling; for simple Feishu-doc tasks, we tested whether a small model could take over.",
+                  metrics: [
+                    { value: "42% → 50%", label: "qwen3.5-4b pass@1 on simple docx / sheet tasks" },
+                    { value: "10 → 4 min", label: "single-step training time after verl full async" }
+                  ],
+                  points: [
+                    { title: "Built the RL training set", body: "Compared small models on lark-cli success rate and speed, picked qwen3.5-4b; dropped opencode for a lightweight bash agent, synthesized 142 questions per usage pattern, and used 50 online questions with pass@8 mean 1–7 as the training set." },
+                    { title: "Parallel-rollout training", body: "Stood up a real parallel-rollout verifiable reward environment, ran GRPO on 3×A100, and tuned max-length with verl full async to cut the step from 10 to 4 minutes." }
+                  ],
+                  tags: ["qwen3.5-4b", "GRPO", "verl", "lark-cli", "Bash Agent", "3×A100"]
+                },
+                {
+                  name: "Mira TrustLayer · Privacy Text Classification",
+                  intro: "Privacy detection for the internal agent Mira: a privacy hit downgrades from external Claude to internal doubao, so the pipeline must balance recall, precision, and speed.",
+                  metrics: [
+                    { value: "70% → 78%", label: "technical-spec label precision at fixed 90% recall" },
+                    { value: "85%+", label: "accuracy at 90% recall after keyword matching" }
+                  ],
+                  points: [
+                    { title: "Cascade architecture", body: "Benchmarked speculative decoding speed of qwen3.5, gemma4 and others with vLLM / SGLang, settling on mmBERT first-pass filter → qwen3.5-4b second-pass confirmation." },
+                    { title: "Data cleaning and attribution", body: "doubao-lite full cleaning → doubao-pro confirmation → human review, iterating annotation standards; fixed 'URL/config-only mislabeled as privacy', lifting precision across technical, financial, and strategic labels." }
+                  ],
+                  tags: ["mmBERT", "qwen3.5-4b", "vLLM", "SGLang", "Cascade", "Speculative Decoding"]
+                }
+              ]
+            },
+            {
+              company: "Tencent TEG",
+              logo: "TEG",
+              role: "Technical Product",
+              period: "2025.03 - 2025.06",
+              current: false,
+              summary: "Owned evaluation-set construction, data cleaning, and effect analysis for STEM and frontend code-generation capabilities, driving SFT and DPO iterations.",
+              projects: [
+                {
+                  name: "Evaluation · Standardization & Automation",
+                  intro: "Rebuilt the human-evaluation SOP for frontend code generation and automated the pipeline for niche STEM competition data.",
+                  metrics: [
+                    { value: "80% → 92-94%", label: "crowdsourced annotation consistency & accuracy" },
+                    { value: "OCR + LLM", label: "Mistral OCR extraction + LLM cleanup pipeline" }
+                  ],
+                  points: [
+                    { title: "Aligned core requirements", body: "Used API calls to produce a 'question-level core requirement' alignment for each item, removing subjective scoring ambiguity and keeping evaluation data trustworthy." },
+                    { title: "STEM data pipeline", body: "Designed a 'Mistral AI OCR + LLM cleanup' workflow with LangChain to efficiently build hard math/physics black-box test sets." }
+                  ],
+                  tags: ["LangChain", "Mistral OCR", "Eval SOP", "SFT / DPO", "Crowdsourcing"]
+                },
+                {
+                  name: "Attribution · Visual Reporting",
+                  intro: "Led the SFT vs DPO (ZeroBase vs Pv2.1.5) comparison and badcase attribution.",
+                  metrics: [
+                    { value: "Weekly board", label: "auto-generated per-domain capability reports" },
+                    { value: "DOM / WebGL / TS", label: "frontend capability coverage report" }
+                  ],
+                  points: [
+                    { title: "Visual analysis", body: "Wrote scripts to auto-generate evaluation reports, with a frontend page showing SFT vs DPO score gaps, badcase details, and capability distribution." },
+                    { title: "Key-issue detection", body: "Badcase analysis surfaced 'aesthetics up but logic (variable definition, dead links) down', pointing to data cleaning and fine-tuning strategy for the next round." }
+                  ],
+                  tags: ["Badcase Analysis", "Visualization", "Coverage Report", "Model Attribution"]
+                }
+              ]
+            }
           ]
         },
         projects: {
@@ -457,7 +607,7 @@
           title: "Skill Matrix",
           desc: "This section stays close to what repeatedly appears in the resume instead of inflating keyword density.",
           items: [
-            { title: "AI / LLM", level: "Advanced", width: "92%", tags: ["PyTorch", "GPT-2 Pretraining", "Transformer Internals", "Qwen SFT", "DPO / PPO / GRPO", "LangChain", "LangGraph"] },
+            { title: "AI / LLM", level: "Advanced", width: "94%", tags: ["PyTorch", "GPT-2 Pretraining", "Transformer Internals", "Qwen SFT", "verl GRPO / DPO", "Parallel Rollout Reward", "vLLM / SGLang", "mmBERT Cascade", "LangChain / LangGraph"] },
             { title: "Backend / Data", level: "Advanced", width: "88%", tags: ["Python", "FastAPI", "Pydantic", "SQL", "Data Cleaning", "Evaluation Pipelines", "Benchmark Automation"] },
             { title: "Frontend / Product", level: "Strong Working", width: "76%", tags: ["React", "Dashboard UX", "Figma", "Axure", "Evaluation Reports", "Voice Flow"] },
             { title: "Workflow / Tooling", level: "Systems-Oriented", width: "80%", tags: ["Sandbox Execution", "GitHub Pages", "HF Dataset Packaging", "PDF Report Generation", "Claude Code", "Codex", "Google AI Studio"] }
@@ -466,11 +616,11 @@
         metrics: {
           kicker: "Metrics",
           title: "Selected Metrics and GitHub Display Slots",
-          desc: "This section collects representative project metrics together with GitHub display modules.",
+          desc: "Representative numbers from industry and research work.",
           cards: [
+            { label: "RL", value: "50%", body: "ByteDance finance agent: qwen3.5-4b pass@1 on simple docx / sheet tasks rose from 42% to 50% after GRPO." },
+            { label: "Privacy", value: "78%", body: "mmBERT→qwen3.5-4b cascade raised technical-spec label precision from 70% to 78% at fixed 90% recall." },
             { label: "Research", value: "2", body: "Two first-author SCI Q1 papers tied to public engineering repositories." },
-            { label: "Benchmark", value: "80 / 800", body: "Pipeline-Bench template count and evaluation instance count cited in the resume." },
-            { label: "Evaluation", value: "92% - 94%", body: "Tencent frontend code generation evaluation consistency after SOP reconstruction." },
             { label: "Inference", value: "14.8ms", body: "PipeFormer sparse-attention latency from the paper-reported setup." }
           ],
           heatmapTitle: "GitHub Contribution Heatmap",
@@ -508,9 +658,6 @@
     function renderStats(items, cls) {
       return items.map((item) => `<div class="card ${cls}"><strong>${item.value}</strong><span>${item.label}</span></div>`).join("");
     }
-    function renderPhilosophy(items) {
-      return items.map((item) => `<div class="philo"><h3>${item.title}</h3><p>${item.body}</p></div>`).join("");
-    }
     function renderTimeline(items) {
       return items.map((item) => `<article><time>${item.time}</time><h3>${item.title}</h3><p>${item.body}</p></article>`).join("");
     }
@@ -527,14 +674,51 @@
         </article>
       `).join("");
     }
+    function renderExperience(items, sep) {
+      return items.map((item) => `
+        <article class="exp-card${item.current ? " current" : ""}">
+          <div class="exp-top">
+            <div class="exp-co"><span class="exp-logo">${item.logo}</span>${item.company}</div>
+            <span class="exp-role">${item.role}</span>
+            <span class="exp-period">${item.current ? '<span class="exp-live" aria-hidden="true"></span>' : ""}${item.period}</span>
+          </div>
+          <p class="exp-summary">${item.summary}</p>
+          <div class="exp-projects">
+            ${item.projects.map((p) => `
+              <div class="exp-project">
+                <h4>${p.name}</h4>
+                <p>${p.intro}</p>
+                <div class="exp-metrics">${p.metrics.map((m) => `<div class="exp-metric"><b>${m.value}</b><span>${m.label}</span></div>`).join("")}</div>
+                <div class="exp-points">${p.points.map((pt) => `<div><strong>${pt.title}${sep}</strong>${pt.body}</div>`).join("")}</div>
+                <div class="tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+              </div>
+            `).join("")}
+          </div>
+        </article>
+      `).join("");
+    }
     function renderSkills(items) {
       return items.map((item) => `
         <article class="card">
           <div class="skill-head"><h3>${item.title}</h3><span class="skill-meta">${item.level}</span></div>
-          <div class="bar"><span style="width:${item.width}"></span></div>
+          <div class="bar"><span data-width="${item.width}" style="width:0"></span></div>
           <div class="tags">${item.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
         </article>
       `).join("");
+    }
+    function animateBars() {
+      const bars = document.querySelectorAll(".bar span");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        bars.forEach((s) => { s.style.width = s.dataset.width; });
+        return;
+      }
+      bars.forEach((s) => { s.style.width = "0"; });
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.style.width = e.target.dataset.width; obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.35 });
+      requestAnimationFrame(() => bars.forEach((s) => obs.observe(s)));
     }
     function renderMetrics(items) {
       return items.map((item) => `<article class="metric-box"><span class="metric-label">${item.label}</span><span class="metric-number">${item.value}</span><p>${item.body}</p></article>`).join("");
@@ -550,7 +734,8 @@
     }
     function render(lang) {
       const data = copy[lang];
-      const { hero, about, projects, skills, metrics, contact } = data;
+      const { hero, about, experience, projects, skills, metrics, contact } = data;
+      const pointSep = lang === "zh" ? "：" : ": ";
       document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
       titleMeta.textContent = data.metaTitle;
       descMeta.setAttribute("content", data.metaDescription);
@@ -558,6 +743,7 @@
       ogDesc.setAttribute("content", data.metaDescription);
       ids("brand-role").textContent = data.brandRole;
       ids("nav-about").textContent = data.nav.about;
+      ids("nav-experience").textContent = data.nav.experience;
       ids("nav-projects").textContent = data.nav.projects;
       ids("nav-skills").textContent = data.nav.skills;
       ids("nav-metrics").textContent = data.nav.metrics;
@@ -569,17 +755,14 @@
       ids("cta-contact").textContent = hero.ctas.contact;
       ids("cta-resume").textContent = hero.ctas.resume;
       ids("hero-stats").innerHTML = renderStats(hero.stats, "status");
-      ids("hero-side-kicker").textContent = hero.sideKicker;
-      ids("hero-side-title").textContent = hero.sideTitle;
-      ids("hero-side-badge").textContent = hero.badge;
-      ids("hero-signals").innerHTML = renderStats(hero.signals, "signal");
-      ids("hero-note").textContent = hero.note;
       ids("about-kicker").textContent = about.kicker;
       ids("about-title").textContent = about.title;
       ids("about-desc").textContent = about.desc;
-      ids("philosophy-title").textContent = about.philosophyTitle;
-      ids("philosophy-list").innerHTML = renderPhilosophy(about.philosophy);
       ids("timeline-list").innerHTML = renderTimeline(about.timeline);
+      ids("experience-kicker").textContent = experience.kicker;
+      ids("experience-title").textContent = experience.title;
+      ids("experience-desc").textContent = experience.desc;
+      ids("experience-list").innerHTML = renderExperience(experience.items, pointSep);
       ids("projects-kicker").textContent = projects.kicker;
       ids("projects-title").textContent = projects.title;
       ids("projects-desc").textContent = projects.desc;
@@ -605,6 +788,7 @@
       ids("footer-right").textContent = data.footer.right;
       subtitleIndex = 0;
       updateSubtitle(hero.subtitles);
+      animateBars();
     }
 
     ids("lang-toggle").addEventListener("click", () => {
