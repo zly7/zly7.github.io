@@ -8,7 +8,9 @@ Static portfolio site for `zly7`, rebuilt as a single-page public portfolio for 
 
 ## Assets
 
-- `public/assets/projects/`: retained legacy project images; the current minimalist homepage does not display image cards.
+- `public/assets/profile/`: profile portrait used in the homepage introduction.
+- `public/assets/projects/`: project screenshots retained and displayed in the Research & Projects section.
+- `public/assets/research/`: figures extracted from the interview PPT / papers for research previews.
 - `public/resume/zly7-resume.pdf`: current Chinese resume PDF.
 - `public/resume/zly7-resume-en.pdf`: current English resume PDF; the homepage language toggle switches CV links automatically.
 

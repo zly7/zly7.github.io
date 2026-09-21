@@ -4,38 +4,49 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>张力宇 | Liyu Zhang</title>
-  <meta name="description" content="张力宇（Liyu Zhang）的个人主页。北京大学硕士，关注 LLM / Agent、模型训练、数据评测与可验证工程智能。">
+  <meta name="description" content="张力宇（Liyu Zhang）的个人主页。北京大学硕士，关注 LLM / Agent、模型训练与评测、稀疏模型和可验证工程智能。">
   <meta name="theme-color" content="#ffffff">
   <style>
     :root {
-      --text: #181818;
-      --muted: #6b6b6b;
-      --light: #9a9a9a;
-      --line: #e9e9e9;
-      --max: 820px;
+      --navy: #16324f;
+      --blue: #2a62d5;
+      --text: #1f2933;
+      --muted: #66717d;
+      --light: #8b96a3;
+      --line: #e4e9ef;
+      --panel: #f7f9fb;
+      --white: #ffffff;
+      --max: 1040px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       color: var(--text);
-      background: #fff;
+      background: var(--white);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
         "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.72;
       -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: inherit;
+      color: var(--navy);
       text-decoration: underline;
-      text-decoration-color: #cfcfcf;
+      text-decoration-color: #bac4ce;
       text-underline-offset: 3px;
       text-decoration-thickness: 1px;
     }
-    a:hover { text-decoration-color: var(--text); }
+
+    a:hover { text-decoration-color: var(--navy); }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
     .wrap {
       width: min(calc(100% - 40px), var(--max));
@@ -43,29 +54,43 @@
     }
 
     header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .97);
       border-bottom: 1px solid var(--line);
     }
+
     .header-inner {
-      min-height: 58px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
     }
+
     .brand {
-      font-weight: 600;
-      text-decoration: none;
+      color: var(--navy);
+      font-weight: 700;
       letter-spacing: -.01em;
+      text-decoration: none;
     }
+
     nav {
       display: flex;
       align-items: center;
-      gap: 18px;
-      font-size: 13px;
+      gap: 19px;
       color: var(--muted);
+      font-size: 13px;
     }
-    nav a { text-decoration: none; }
-    nav a:hover { color: var(--text); }
+
+    nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav a:hover { color: var(--navy); }
+
     .lang {
       padding: 0;
       border: 0;
@@ -74,108 +99,280 @@
       cursor: pointer;
       font: inherit;
     }
-    .lang:hover { color: var(--text); }
 
-    main { padding-bottom: 40px; }
+    .lang:hover { color: var(--navy); }
+
+    main { padding-bottom: 48px; }
 
     .hero {
-      padding: 68px 0 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 190px;
+      gap: 58px;
+      align-items: center;
+      padding: 72px 0 64px;
     }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: .02em;
+    }
+
     h1 {
       margin: 0;
-      font-size: clamp(2.5rem, 7vw, 3.5rem);
-      line-height: 1.08;
-      font-weight: 650;
-      letter-spacing: -.04em;
+      color: var(--navy);
+      font-size: clamp(2.65rem, 6vw, 4rem);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -.045em;
     }
-    .name-en {
+
+    .secondary-name {
       margin: 8px 0 0;
       color: var(--muted);
       font-size: 18px;
     }
+
     .lead {
-      max-width: 690px;
+      max-width: 720px;
       margin: 24px 0 0;
+      color: #384551;
       font-size: 17px;
-      line-height: 1.8;
+      line-height: 1.82;
     }
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 22px;
+
+    .facts {
+      margin-top: 18px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    section {
-      padding: 38px 0 8px;
-      border-top: 1px solid var(--line);
-      scroll-margin-top: 24px;
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      margin-top: 22px;
+      font-size: 14px;
     }
+
+    .portrait {
+      width: 190px;
+      justify-self: end;
+    }
+
+    .portrait img {
+      width: 190px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    section {
+      padding: 48px 0 12px;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 74px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
     h2 {
-      margin: 0 0 28px;
-      font-size: 18px;
+      margin: 0;
+      color: var(--navy);
+      font-size: 20px;
       line-height: 1.3;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: -.01em;
     }
 
-    .item {
-      display: grid;
-      grid-template-columns: 118px 1fr;
-      gap: 24px;
-      padding-bottom: 27px;
-    }
-    .when {
-      color: var(--light);
-      font-size: 13px;
-      line-height: 1.6;
-      padding-top: 2px;
-    }
-    .item h3 {
+    .section-note {
       margin: 0;
-      font-size: 15px;
-      line-height: 1.5;
-      font-weight: 600;
-    }
-    .role {
-      color: var(--muted);
-      font-weight: 400;
-    }
-    .item p {
-      margin: 7px 0 0;
+      max-width: 720px;
       color: var(--muted);
     }
 
-    .paper {
-      padding-bottom: 27px;
+    .experience-list {
+      display: grid;
+      gap: 0;
     }
-    .paper h3 {
-      margin: 0;
-      font-size: 15px;
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 30px;
+      padding: 25px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .experience-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .when {
+      color: var(--light);
+      font-size: 13px;
       line-height: 1.55;
-      font-weight: 600;
     }
-    .paper-meta {
-      margin-top: 3px;
+
+    .experience-item h3,
+    .work-copy h3,
+    .education-item h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .role {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .experience-item p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .work-list {
+      display: grid;
+      gap: 30px;
+    }
+
+    .work {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+      gap: 30px;
+      align-items: start;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--white);
+    }
+
+    .work-visuals {
+      min-width: 0;
+    }
+
+    .figure-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    .figure {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .figure img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .figure-cover img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .figure-caption {
+      margin: 7px 2px 0;
+      color: var(--light);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .thumb-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .thumb-row .figure img {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
+    .work-copy {
+      padding-top: 2px;
+    }
+
+    .work-type {
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .work-meta {
+      margin-top: 5px;
       color: var(--light);
       font-size: 13px;
     }
-    .paper p {
-      margin: 7px 0 0;
+
+    .work-copy p {
+      margin: 12px 0 0;
       color: var(--muted);
     }
-    .paper-links {
+
+    .work-points {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .work-points li { margin: 6px 0; }
+
+    .work-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 14px;
-      margin-top: 7px;
+      margin-top: 15px;
       font-size: 13px;
+    }
+
+    .education-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .education-item {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 30px;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .education-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .education-item p {
+      margin: 5px 0 0;
       color: var(--muted);
     }
 
     footer {
-      margin-top: 42px;
+      margin-top: 48px;
       padding-top: 22px;
       border-top: 1px solid var(--line);
       color: var(--light);
@@ -185,17 +382,80 @@
       gap: 16px;
     }
 
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr) 150px;
+        gap: 32px;
+      }
+
+      .portrait,
+      .portrait img { width: 150px; }
+
+      .section-head,
+      .experience-item,
+      .education-item {
+        grid-template-columns: 140px minmax(0, 1fr);
+        gap: 22px;
+      }
+
+      .work {
+        grid-template-columns: 1fr;
+      }
+
+      .work-copy { padding-top: 0; }
+    }
+
     @media (max-width: 640px) {
       .wrap { width: min(calc(100% - 28px), var(--max)); }
-      .header-inner { min-height: 52px; }
+      .header-inner { min-height: 54px; }
       nav { gap: 12px; }
       nav a:nth-child(3) { display: none; }
-      .hero { padding: 48px 0 40px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        padding: 48px 0 44px;
+      }
+
+      .portrait {
+        width: 128px;
+        justify-self: start;
+        grid-row: 1;
+      }
+
+      .portrait img { width: 128px; }
+
+      .hero-copy { grid-row: 2; }
+
       .lead { font-size: 16px; }
-      section { padding-top: 30px; }
-      .item { grid-template-columns: 1fr; gap: 4px; padding-bottom: 24px; }
-      .when { padding-top: 0; }
-      footer { flex-direction: column; gap: 4px; }
+
+      section { padding-top: 36px; }
+
+      .section-head,
+      .experience-item,
+      .education-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .section-head { gap: 10px; }
+
+      .experience-item,
+      .education-item {
+        padding: 22px 0;
+      }
+
+      .work {
+        padding: 16px;
+        border-radius: 11px;
+      }
+
+      .thumb-row { grid-template-columns: 1fr; }
+
+      footer {
+        flex-direction: column;
+        gap: 4px;
+      }
     }
   </style>
 </head>
@@ -205,7 +465,7 @@
       <a class="brand" href="#top" data-i18n="brand">张力宇</a>
       <nav aria-label="Primary navigation">
         <a href="#experience" data-i18n="nav.experience">经历</a>
-        <a href="#research" data-i18n="nav.research">研究</a>
+        <a href="#work" data-i18n="nav.work">研究与项目</a>
         <a href="#education" data-i18n="nav.education">教育</a>
         <a id="nav-cv-link" href="./public/resume/zly7-resume.pdf" target="_blank" rel="noreferrer">CV</a>
         <button class="lang" id="lang-toggle" type="button">EN</button>
@@ -215,110 +475,221 @@
 
   <main id="top" class="wrap">
     <div class="hero">
-      <h1 data-i18n="hero.name">张力宇</h1>
-      <p class="name-en" data-i18n="hero.secondaryName">Liyu Zhang</p>
-      <p class="lead" data-i18n="hero.lead">北京大学硕士，南方科技大学计算机本科。关注 LLM / Agent 的训练、数据与评测，以及稀疏模型和可验证工程智能。</p>
-      <div class="links">
-        <a id="hero-cv-link" href="./public/resume/zly7-resume.pdf" target="_blank" rel="noreferrer" data-i18n="hero.cv">简历</a>
-        <a href="https://github.com/zly7" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="mailto:2674793917@qq.com">Email</a>
+      <div class="hero-copy">
+        <p class="hero-kicker" data-i18n="hero.kicker">Peking University · M.S. · 2027</p>
+        <h1 data-i18n="hero.name">张力宇</h1>
+        <p class="secondary-name" data-i18n="hero.secondaryName">Liyu Zhang</p>
+        <p class="lead" data-i18n="hero.lead">北京大学硕士，南方科技大学计算机本科。关注 LLM / Agent 的训练、数据与评测，以及稀疏模型和可验证工程智能。</p>
+        <p class="facts" data-i18n="hero.facts">腾讯 · 字节跳动 · 知乎 · A*STAR Singapore · LocationMind Tokyo · 3 篇 SCI 一区 + ACL 2026</p>
+        <div class="links">
+          <a id="hero-cv-link" href="./public/resume/zly7-resume.pdf" target="_blank" rel="noreferrer" data-i18n="hero.cv">简历</a>
+          <a href="https://github.com/zly7" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="mailto:2674793917@qq.com">Email</a>
+        </div>
+      </div>
+
+      <div class="portrait">
+        <img src="./public/assets/profile/liyu.png" alt="Liyu Zhang portrait">
       </div>
     </div>
 
     <section id="experience">
-      <h2 data-i18n="experience.title">经历</h2>
-
-      <div class="item">
-        <div class="when">2026.07 — 2026.09</div>
-        <div>
-          <h3>知乎 SoTALab <span class="role" data-i18n="roles.algorithmIntern">· 模型算法实习生</span></h3>
-          <p data-i18n="experience.zhihu">负责 SWE-bench-Pro 风格长轨迹清洗与代码模型训练。在 16 张 A100 上全量微调 Qwen-3.6-27B，将结果从 50.6% 提升至 53.1%，并将 Qwen3.5-35B-A3B-Base 从 35.4% 提升至 45.3%。</p>
-        </div>
+      <div class="section-head">
+        <h2 data-i18n="experience.title">经历</h2>
+        <p class="section-note" data-i18n="experience.note">模型训练、Agent RL、隐私分类与大模型评测，同时保留早期在新加坡与东京的研究和数据分析经历。</p>
       </div>
 
-      <div class="item">
-        <div class="when">2026.04 — 2026.07</div>
-        <div>
-          <h3>字节跳动 <span class="role" data-i18n="roles.algorithmIntern">· 模型算法实习生</span></h3>
-          <p data-i18n="experience.bytedance">参与财务 Agent 的小模型强化学习与 Mira TrustLayer 隐私分类。完成 Qwen3.5-4B 的 Agentic RL 数据、并行 rollout 与 reward 验证，并参与 mmBERT → Qwen3.5-4B 的级联隐私检测链路。</p>
+      <div class="experience-list">
+        <div class="experience-item">
+          <div class="when">2026.07 — 2026.09</div>
+          <div>
+            <h3>知乎 SoTALab <span class="role" data-i18n="roles.algorithm">· 模型算法实习生</span></h3>
+            <p data-i18n="experience.zhihu">负责 SWE-bench-Pro 风格长轨迹清洗与代码模型训练。在 16 张 A100 上全量微调 Qwen-3.6-27B，将结果从 50.6% 提升至 53.1%，并将 Qwen3.5-35B-A3B-Base 从 35.4% 提升至 45.3%。</p>
+          </div>
         </div>
-      </div>
 
-      <div class="item">
-        <div class="when">2025.03 — 2025.06</div>
-        <div>
-          <h3>腾讯 TEG <span class="role" data-i18n="roles.evalIntern">· 模型评测实习生</span></h3>
-          <p data-i18n="experience.tencent">负责大模型 STEM 与前端代码生成评测，重构人工评测 SOP，并搭建 OCR + LLM 数据处理链路，支持 SFT / DPO 模型的 Badcase 分析与迭代。</p>
+        <div class="experience-item">
+          <div class="when">2026.04 — 2026.07</div>
+          <div>
+            <h3>字节跳动 <span class="role" data-i18n="roles.algorithm">· 模型算法实习生</span></h3>
+            <p data-i18n="experience.bytedance">参与财务 Agent 的小模型强化学习与 Mira TrustLayer 隐私分类，完成 Agentic RL 数据、并行 rollout / reward 验证，并参与 mmBERT → Qwen3.5-4B 的级联隐私检测链路。</p>
+          </div>
         </div>
-      </div>
 
-      <div class="item">
-        <div class="when">2024.03 — 2024.07</div>
-        <div>
-          <h3>LocationMind · Tokyo <span class="role" data-i18n="roles.dataIntern">· 数据分析实习生</span></h3>
-          <p data-i18n="experience.locationmind">处理 GPS 轨迹数据，通过停留点聚类、逆向 POI 查询与语义信息融合分析用户的 Home / Work / Other 高频活动地点。</p>
+        <div class="experience-item">
+          <div class="when">2025.03 — 2025.06</div>
+          <div>
+            <h3>腾讯 TEG <span class="role" data-i18n="roles.eval">· 模型评测实习生</span></h3>
+            <p data-i18n="experience.tencent">负责大模型 STEM 与前端代码生成评测，重构人工评测 SOP，并搭建 OCR + LLM 数据处理链路，支持 SFT / DPO 模型的 Badcase 分析与迭代。</p>
+          </div>
         </div>
-      </div>
 
-      <div class="item">
-        <div class="when">2023.04 — 2023.09</div>
-        <div>
-          <h3>A*STAR · Singapore <span class="role">· Research Assistant</span></h3>
-          <p data-i18n="experience.astar">研究长序列 Self-Attention 的计算瓶颈并实现 LSH 稀疏注意力；相关思路后来延伸到 PipeFormer 的局部稀疏注意力设计。</p>
+        <div class="experience-item">
+          <div class="when">2024.03 — 2024.07</div>
+          <div>
+            <h3>LocationMind · Tokyo <span class="role" data-i18n="roles.data">· 数据分析实习生</span></h3>
+            <p data-i18n="experience.locationmind">处理 GPS 轨迹数据，通过停留点聚类、逆向 POI 查询与语义信息融合分析用户的 Home / Work / Other 高频活动地点。</p>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="when">2023.04 — 2023.09</div>
+          <div>
+            <h3>A*STAR · Singapore <span class="role">· Research Assistant</span></h3>
+            <p data-i18n="experience.astar">研究长序列 Self-Attention 的计算瓶颈并实现 LSH 稀疏注意力；相关思路后来延伸到 PipeFormer 的局部稀疏注意力设计。</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="research">
-      <h2 data-i18n="research.title">研究</h2>
+    <section id="work">
+      <div class="section-head">
+        <h2 data-i18n="work.title">研究与项目</h2>
+        <p class="section-note" data-i18n="work.note">保留论文和项目中的关键图，让页面更接近研究者的个人主页，而不是产品宣传页。</p>
+      </div>
 
-      <article class="paper">
-        <h3>PipeFormer: A Physics-Informed Tokenized Sparse Transformer for Natural Gas Pipeline Networks</h3>
-        <div class="paper-meta" data-i18n="research.pipeformerMeta">第一作者 · Journal of Pipeline Science and Engineering · 2026</div>
-        <p data-i18n="research.pipeformer">面向大规模管网瞬态预测，结合 topology-aware sparse attention、离散 Token 化与物理约束；前向推理延迟降至 14.8 ms。</p>
-        <div class="paper-links">
-          <a href="https://doi.org/10.1016/j.jpse.2026.100472" target="_blank" rel="noreferrer">Paper</a>
-          <a href="https://github.com/zly7/pipeFormer" target="_blank" rel="noreferrer">Code</a>
-        </div>
-      </article>
+      <div class="work-list">
+        <article class="work">
+          <div class="work-visuals">
+            <a class="figure-link" href="./public/assets/research/pipeformer-architecture.png" target="_blank" rel="noreferrer">
+              <div class="figure">
+                <img src="./public/assets/research/pipeformer-architecture.png" alt="PipeFormer architecture">
+              </div>
+            </a>
+            <p class="figure-caption" data-i18n="work.pipeformerFig">PipeFormer 架构：管网拓扑、局部结构与拓扑稀疏注意力。</p>
 
-      <article class="paper">
-        <h3>Pipeline-Agent &amp; PipeClaw</h3>
-        <div class="paper-meta" data-i18n="research.pipeclawMeta">第一作者 · 2 篇 · Journal of Pipeline Science and Engineering · 2026</div>
-        <p data-i18n="research.pipeclaw">围绕可验证工程智能，连接显式计划、工具执行、运行历史、瞬态预测与约束校验，支持可复现的管网分析和连续调度。</p>
-        <div class="paper-links">
-          <a href="https://www.sciencedirect.com/science/article/pii/S2667143326000429" target="_blank" rel="noreferrer">Pipeline-Agent</a>
-          <a href="https://www.sciencedirect.com/science/article/pii/S2667143326001411" target="_blank" rel="noreferrer">PipeClaw</a>
-          <a href="https://github.com/zly7/pipeclaw" target="_blank" rel="noreferrer">Code</a>
-        </div>
-      </article>
+            <div class="thumb-row">
+              <a class="figure-link" href="./public/assets/projects/pipeformer-attention.png" target="_blank" rel="noreferrer">
+                <div class="figure">
+                  <img src="./public/assets/projects/pipeformer-attention.png" alt="PipeFormer sparse attention">
+                </div>
+              </a>
+              <a class="figure-link" href="./public/assets/research/pipeformer-transient.png" target="_blank" rel="noreferrer">
+                <div class="figure">
+                  <img src="./public/assets/research/pipeformer-transient.png" alt="PipeFormer transient prediction">
+                </div>
+              </a>
+            </div>
+          </div>
 
-      <article class="paper">
-        <h3>InstructDiff: Domain-Adaptive Data Selection via Contrastive Entropy for Efficient LLM Fine-Tuning</h3>
-        <div class="paper-meta" data-i18n="research.instructMeta">第四作者 · ACL 2026</div>
-        <p data-i18n="research.instruct">用基础模型与校准模型之间的 NLL 和对比熵变化筛选训练数据，在多个任务上用更少数据完成有效微调；本人负责代码域实验。</p>
-        <div class="paper-links">
-          <a href="https://aclanthology.org/2026.acl-long.486/" target="_blank" rel="noreferrer">Paper</a>
-        </div>
-      </article>
+          <div class="work-copy">
+            <div class="work-type">Research</div>
+            <h3>PipeFormer</h3>
+            <div class="work-meta" data-i18n="work.pipeformerMeta">第一作者 · Journal of Pipeline Science and Engineering · 2026</div>
+            <p data-i18n="work.pipeformer">面向大规模天然气管网瞬态预测，结合 topology-aware sparse attention、离散 Token 化与物理约束。</p>
+            <ul class="work-points">
+              <li data-i18n="work.pipeformerP1">BFS 邻域 K=32，将 attention 从全局交互限制为物理邻域交互。</li>
+              <li data-i18n="work.pipeformerP2">前向推理延迟约 200 ms → 14.8 ms，并保持对压力与流量突变的跟踪能力。</li>
+            </ul>
+            <div class="work-links">
+              <a href="https://doi.org/10.1016/j.jpse.2026.100472" target="_blank" rel="noreferrer">Paper</a>
+              <a href="https://github.com/zly7/pipeFormer" target="_blank" rel="noreferrer">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="work-visuals">
+            <a class="figure-link" href="./public/assets/research/pipeclaw-architecture.webp" target="_blank" rel="noreferrer">
+              <div class="figure">
+                <img src="./public/assets/research/pipeclaw-architecture.webp" alt="PipeClaw architecture">
+              </div>
+            </a>
+            <p class="figure-caption" data-i18n="work.pipeclawFig">PipeClaw 系统架构：运行历史、瞬态预测与 Verified Loop。</p>
+
+            <a class="figure-link" href="./public/assets/projects/pipeclaw-system.png" target="_blank" rel="noreferrer" style="margin-top:10px">
+              <div class="figure figure-cover">
+                <img src="./public/assets/projects/pipeclaw-system.png" alt="PipeClaw system interface">
+              </div>
+            </a>
+          </div>
+
+          <div class="work-copy">
+            <div class="work-type">Research · Agent System</div>
+            <h3>Pipeline-Agent &amp; PipeClaw</h3>
+            <div class="work-meta" data-i18n="work.pipeclawMeta">第一作者 · 2 篇 · Journal of Pipeline Science and Engineering · 2026</div>
+            <p data-i18n="work.pipeclaw">围绕可验证工程智能，连接显式计划、工具执行、运行历史、瞬态预测与约束校验，支持可复现的管网分析和连续调度。</p>
+            <ul class="work-points">
+              <li data-i18n="work.pipeclawP1">Pipeline-Agent 使用 plan.md、Python 执行与校验形成可复现的工程计算链路。</li>
+              <li data-i18n="work.pipeclawP2">PipeClaw 增加运行历史记忆、PipeFormer Skill 与候选动作的接受 / 修订 / 拒绝闭环。</li>
+            </ul>
+            <div class="work-links">
+              <a href="https://www.sciencedirect.com/science/article/pii/S2667143326000429" target="_blank" rel="noreferrer">Pipeline-Agent</a>
+              <a href="https://www.sciencedirect.com/science/article/pii/S2667143326001411" target="_blank" rel="noreferrer">PipeClaw</a>
+              <a href="https://github.com/zly7/pipeclaw" target="_blank" rel="noreferrer">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="work-visuals">
+            <a class="figure-link" href="./public/assets/research/instructdiff-pipeline.png" target="_blank" rel="noreferrer">
+              <div class="figure">
+                <img src="./public/assets/research/instructdiff-pipeline.png" alt="InstructDiff pipeline">
+              </div>
+            </a>
+            <p class="figure-caption" data-i18n="work.instructFig">InstructDiff：warmup 校准、双向 ΔNLL 过滤与对比熵选样。</p>
+          </div>
+
+          <div class="work-copy">
+            <div class="work-type">Research</div>
+            <h3>InstructDiff</h3>
+            <div class="work-meta" data-i18n="work.instructMeta">第四作者 · ACL 2026</div>
+            <p data-i18n="work.instruct">比较基础模型与校准模型的 NLL 与对比熵变化进行数据筛选；本人负责代码域 LLaMA3-8B 的筛选、全参微调与评测。</p>
+            <ul class="work-points">
+              <li data-i18n="work.instructP1">代码域选择 20% 数据，在 HumanEval、MBPP 与 BigCodeBench 上完成验证。</li>
+              <li data-i18n="work.instructP2">论文代码域平均分 43.0 → 45.1，超过全量训练。</li>
+            </ul>
+            <div class="work-links">
+              <a href="https://aclanthology.org/2026.acl-long.486/" target="_blank" rel="noreferrer">Paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="work-visuals">
+            <a class="figure-link" href="./public/assets/projects/lingxi-dashboard.png" target="_blank" rel="noreferrer">
+              <div class="figure figure-cover">
+                <img src="./public/assets/projects/lingxi-dashboard.png" alt="Lingxi smart eldercare dashboard">
+              </div>
+            </a>
+            <p class="figure-caption" data-i18n="work.lingxiFig">灵犀智慧养老原型界面。</p>
+          </div>
+
+          <div class="work-copy">
+            <div class="work-type">Project</div>
+            <h3 data-i18n="work.lingxiTitle">灵犀智慧养老</h3>
+            <div class="work-meta" data-i18n="work.lingxiMeta">Human-centered AI · Prototype</div>
+            <p data-i18n="work.lingxi">结合眼动 / VR 采集、VLM 场景理解、LLM 推理、FastAPI 与 React 看板，完成从感知到交互展示的智慧养老原型。</p>
+            <div class="work-links">
+              <a href="https://github.com/zly7/lingxi-eldercare" target="_blank" rel="noreferrer">Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="education">
-      <h2 data-i18n="education.title">教育</h2>
-
-      <div class="item">
-        <div class="when">2024.09 — 2027</div>
-        <div>
-          <h3>北京大学</h3>
-          <p data-i18n="education.pku">国土空间规划（智慧城市与大数据）硕士</p>
-        </div>
+      <div class="section-head">
+        <h2 data-i18n="education.title">教育</h2>
+        <p class="section-note" data-i18n="education.note">计算机本科背景，硕士阶段将 AI 系统与智慧城市、基础设施场景结合。</p>
       </div>
 
-      <div class="item">
-        <div class="when">2020.09 — 2024.07</div>
-        <div>
-          <h3>南方科技大学</h3>
-          <p data-i18n="education.sustech">计算机科学与技术（图灵班计划）本科 · GPA 3.80 / 4.00（22 / 221）</p>
+      <div class="education-list">
+        <div class="education-item">
+          <div class="when">2024.09 — 2027</div>
+          <div>
+            <h3>北京大学</h3>
+            <p data-i18n="education.pku">国土空间规划（智慧城市与大数据）硕士</p>
+          </div>
+        </div>
+
+        <div class="education-item">
+          <div class="when">2020.09 — 2024.07</div>
+          <div>
+            <h3>南方科技大学</h3>
+            <p data-i18n="education.sustech">计算机科学与技术（图灵班计划）本科 · GPA 3.80 / 4.00（22 / 221）</p>
+          </div>
         </div>
       </div>
     </section>
@@ -332,76 +703,112 @@
   <script>
     const i18n = {
       zh: {
-        nav: { experience: '经历', research: '研究', education: '教育' },
         brand: '张力宇',
+        nav: { experience: '经历', work: '研究与项目', education: '教育' },
         hero: {
+          kicker: 'Peking University · M.S. · 2027',
           name: '张力宇',
           secondaryName: 'Liyu Zhang',
           lead: '北京大学硕士，南方科技大学计算机本科。关注 LLM / Agent 的训练、数据与评测，以及稀疏模型和可验证工程智能。',
+          facts: '腾讯 · 字节跳动 · 知乎 · A*STAR Singapore · LocationMind Tokyo · 3 篇 SCI 一区 + ACL 2026',
           cv: '简历'
+        },
+        roles: {
+          algorithm: '· 模型算法实习生',
+          eval: '· 模型评测实习生',
+          data: '· 数据分析实习生'
         },
         experience: {
           title: '经历',
+          note: '模型训练、Agent RL、隐私分类与大模型评测，同时保留早期在新加坡与东京的研究和数据分析经历。',
           zhihu: '负责 SWE-bench-Pro 风格长轨迹清洗与代码模型训练。在 16 张 A100 上全量微调 Qwen-3.6-27B，将结果从 50.6% 提升至 53.1%，并将 Qwen3.5-35B-A3B-Base 从 35.4% 提升至 45.3%。',
-          bytedance: '参与财务 Agent 的小模型强化学习与 Mira TrustLayer 隐私分类。完成 Qwen3.5-4B 的 Agentic RL 数据、并行 rollout 与 reward 验证，并参与 mmBERT → Qwen3.5-4B 的级联隐私检测链路。',
+          bytedance: '参与财务 Agent 的小模型强化学习与 Mira TrustLayer 隐私分类，完成 Agentic RL 数据、并行 rollout / reward 验证，并参与 mmBERT → Qwen3.5-4B 的级联隐私检测链路。',
           tencent: '负责大模型 STEM 与前端代码生成评测，重构人工评测 SOP，并搭建 OCR + LLM 数据处理链路，支持 SFT / DPO 模型的 Badcase 分析与迭代。',
           locationmind: '处理 GPS 轨迹数据，通过停留点聚类、逆向 POI 查询与语义信息融合分析用户的 Home / Work / Other 高频活动地点。',
           astar: '研究长序列 Self-Attention 的计算瓶颈并实现 LSH 稀疏注意力；相关思路后来延伸到 PipeFormer 的局部稀疏注意力设计。'
         },
-        roles: {
-          algorithmIntern: '· 模型算法实习生',
-          evalIntern: '· 模型评测实习生',
-          dataIntern: '· 数据分析实习生'
-        },
-        research: {
-          title: '研究',
+        work: {
+          title: '研究与项目',
+          note: '保留论文和项目中的关键图，让页面更接近研究者的个人主页，而不是产品宣传页。',
+          pipeformerFig: 'PipeFormer 架构：管网拓扑、局部结构与拓扑稀疏注意力。',
           pipeformerMeta: '第一作者 · Journal of Pipeline Science and Engineering · 2026',
-          pipeformer: '面向大规模管网瞬态预测，结合 topology-aware sparse attention、离散 Token 化与物理约束；前向推理延迟降至 14.8 ms。',
+          pipeformer: '面向大规模天然气管网瞬态预测，结合 topology-aware sparse attention、离散 Token 化与物理约束。',
+          pipeformerP1: 'BFS 邻域 K=32，将 attention 从全局交互限制为物理邻域交互。',
+          pipeformerP2: '前向推理延迟约 200 ms → 14.8 ms，并保持对压力与流量突变的跟踪能力。',
+          pipeclawFig: 'PipeClaw 系统架构：运行历史、瞬态预测与 Verified Loop。',
           pipeclawMeta: '第一作者 · 2 篇 · Journal of Pipeline Science and Engineering · 2026',
           pipeclaw: '围绕可验证工程智能，连接显式计划、工具执行、运行历史、瞬态预测与约束校验，支持可复现的管网分析和连续调度。',
+          pipeclawP1: 'Pipeline-Agent 使用 plan.md、Python 执行与校验形成可复现的工程计算链路。',
+          pipeclawP2: 'PipeClaw 增加运行历史记忆、PipeFormer Skill 与候选动作的接受 / 修订 / 拒绝闭环。',
+          instructFig: 'InstructDiff：warmup 校准、双向 ΔNLL 过滤与对比熵选样。',
           instructMeta: '第四作者 · ACL 2026',
-          instruct: '用基础模型与校准模型之间的 NLL 和对比熵变化筛选训练数据，在多个任务上用更少数据完成有效微调；本人负责代码域实验。'
+          instruct: '比较基础模型与校准模型的 NLL 与对比熵变化进行数据筛选；本人负责代码域 LLaMA3-8B 的筛选、全参微调与评测。',
+          instructP1: '代码域选择 20% 数据，在 HumanEval、MBPP 与 BigCodeBench 上完成验证。',
+          instructP2: '论文代码域平均分 43.0 → 45.1，超过全量训练。',
+          lingxiFig: '灵犀智慧养老原型界面。',
+          lingxiTitle: '灵犀智慧养老',
+          lingxiMeta: 'Human-centered AI · Prototype',
+          lingxi: '结合眼动 / VR 采集、VLM 场景理解、LLM 推理、FastAPI 与 React 看板，完成从感知到交互展示的智慧养老原型。'
         },
         education: {
           title: '教育',
+          note: '计算机本科背景，硕士阶段将 AI 系统与智慧城市、基础设施场景结合。',
           pku: '国土空间规划（智慧城市与大数据）硕士',
           sustech: '计算机科学与技术（图灵班计划）本科 · GPA 3.80 / 4.00（22 / 221）'
         },
         footer: '最后更新 · 2026.09'
       },
       en: {
-        nav: { experience: 'Experience', research: 'Research', education: 'Education' },
         brand: 'Liyu Zhang',
+        nav: { experience: 'Experience', work: 'Research & Projects', education: 'Education' },
         hero: {
+          kicker: 'Peking University · M.S. · 2027',
           name: 'Liyu Zhang',
           secondaryName: '张力宇',
           lead: 'M.S. student at Peking University with a computer science background from SUSTech. I work on LLM / agent training, data and evaluation, sparse models, and verifiable AI systems.',
+          facts: 'Tencent · ByteDance · Zhihu · A*STAR Singapore · LocationMind Tokyo · 3 JCR Q1 SCI papers + ACL 2026',
           cv: 'CV'
+        },
+        roles: {
+          algorithm: '· Model Algorithm Intern',
+          eval: '· Model Evaluation Intern',
+          data: '· Data Analysis Intern'
         },
         experience: {
           title: 'Experience',
+          note: 'Model training, agent RL, privacy classification, and LLM evaluation, alongside earlier research and data-analysis experience in Singapore and Tokyo.',
           zhihu: 'Curated long SWE-bench-Pro-style trajectories and trained code models. Full-finetuned Qwen-3.6-27B on 16 A100 GPUs, improving 50.6% to 53.1%, and Qwen3.5-35B-A3B-Base from 35.4% to 45.3%.',
           bytedance: 'Worked on small-model reinforcement learning for a finance agent and privacy classification for Mira TrustLayer, including Agentic RL data, parallel rollout / reward validation, and an mmBERT → Qwen3.5-4B cascade.',
           tencent: 'Built evaluation workflows for STEM and frontend code generation, redesigned the human-evaluation SOP, and developed an OCR + LLM data pipeline for SFT / DPO bad-case analysis.',
           locationmind: 'Analyzed GPS trajectories using stay-point clustering, reverse POI lookup, and semantic signals to identify frequent Home / Work / Other locations.',
           astar: 'Studied the computation bottleneck of long-sequence self-attention and implemented LSH-based sparse attention; the idea later informed PipeFormer.'
         },
-        roles: {
-          algorithmIntern: '· Model Algorithm Intern',
-          evalIntern: '· Model Evaluation Intern',
-          dataIntern: '· Data Analysis Intern'
-        },
-        research: {
-          title: 'Research',
+        work: {
+          title: 'Research & Projects',
+          note: 'Key figures from papers and projects are kept visible, so the page reads like a researcher’s homepage rather than a product landing page.',
+          pipeformerFig: 'PipeFormer architecture: pipeline topology, local structure, and topology-aware sparse attention.',
           pipeformerMeta: 'First author · Journal of Pipeline Science and Engineering · 2026',
-          pipeformer: 'A topology-aware, tokenized, physics-informed Transformer for transient prediction on large pipeline networks, with 14.8 ms forward inference.',
+          pipeformer: 'Transient prediction for large natural-gas pipeline networks using topology-aware sparse attention, discrete tokenization, and physics constraints.',
+          pipeformerP1: 'BFS neighborhood K=32 restricts attention from global interactions to physically relevant neighbors.',
+          pipeformerP2: 'Forward latency is reduced from about 200 ms to 14.8 ms while tracking abrupt pressure and flow changes.',
+          pipeclawFig: 'PipeClaw architecture: operational history, transient prediction, and the verified loop.',
           pipeclawMeta: 'First author · 2 papers · Journal of Pipeline Science and Engineering · 2026',
-          pipeclaw: 'Verifiable engineering AI that connects explicit planning, tool execution, operational history, transient prediction, and constraint checks for reproducible analysis and continuous dispatch support.',
+          pipeclaw: 'Verifiable engineering AI connecting explicit planning, tool execution, operational history, transient prediction, and constraint checks for reproducible pipeline analysis and continuous dispatch support.',
+          pipeclawP1: 'Pipeline-Agent uses plan.md, Python execution, and validation to form a reproducible engineering computation path.',
+          pipeclawP2: 'PipeClaw adds operational memory, the PipeFormer skill, and an accept / revise / reject loop for candidate actions.',
+          instructFig: 'InstructDiff: warmup calibration, bidirectional ΔNLL filtering, and contrastive-entropy selection.',
           instructMeta: 'Fourth author · ACL 2026',
-          instruct: 'Selects fine-tuning data using NLL and contrastive-entropy changes between base and calibrated models; I worked on the code-domain experiments.'
+          instruct: 'Selects training data using NLL and contrastive-entropy changes between base and calibrated models; I worked on LLaMA3-8B code-domain selection, full fine-tuning, and evaluation.',
+          instructP1: 'Selected 20% of code-domain data and evaluated on HumanEval, MBPP, and BigCodeBench.',
+          instructP2: 'The paper reports a code-domain average of 43.0 → 45.1, outperforming full-data training.',
+          lingxiFig: 'Lingxi smart eldercare prototype interface.',
+          lingxiTitle: 'Lingxi Smart Eldercare',
+          lingxiMeta: 'Human-centered AI · Prototype',
+          lingxi: 'A prototype combining eye / VR capture, VLM scene understanding, LLM reasoning, FastAPI, and a React dashboard from perception to interactive presentation.'
         },
         education: {
           title: 'Education',
+          note: 'Computer science undergraduate training, followed by graduate work connecting AI systems with smart-city and infrastructure settings.',
           pku: 'M.S. in Spatial Planning (Smart City & Big Data)',
           sustech: 'B.S. in Computer Science and Technology (Turing Class) · GPA 3.80 / 4.00 (22 / 221)'
         },
