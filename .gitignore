@@ -23,6 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 
-# Local resume source at repo root — the published copy lives in public/resume/.
-# Root-level PDFs (esp. with spaces/non-ASCII names) can break GitHub Pages deploys.
+# Local resume source at repo root — published copies live in public/resume/.
+# Keep editable/private source files out of the public GitHub Pages repo.
 /*.pdf
+/*.docx
+
+# Local Codex permission/config notes are machine workflow files, not website content.
+/.codex/
+/codex-windows-dangerous-permissions.md
+
+# Temporary renders, extracted PPT figures, and local page snapshots.
+/backup/
